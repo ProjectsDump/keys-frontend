@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @import './scss/scssComponents/variables';
 
 *,
@@ -22,6 +24,24 @@ body {
 }
 a {
 	text-decoration: none;
+}
+.btn {
+	border: 0;
+	border-radius: 20px;
+	padding: 10px 20px;
+	background-color: transparent;
+	font-weight: bold;
+	cursor: pointer;
+	&:active {
+		transform: scale(90%);
+		transition: 0.2s;
+	}
+}
+.click_animation {
+	&:active {
+		transform: scale(90%);
+		transition: 0.2s;
+	}
 }
 
 .main {
@@ -89,8 +109,11 @@ a {
 	position: relative;
 	z-index: 10;
 	@include position(center, center, column);
-	& h1{
-		font-size: 40px;
-		@include text-gradient;
-	}
+	overflow-x: hidden;
+
+	// components
+	@import './scss/components/navbar';
+
+	// pages
+	@import './scss/pages/home'
 }

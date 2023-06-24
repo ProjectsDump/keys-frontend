@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar';
 import '../styles/global.css';
 import { Inter } from 'next/font/google';
 
@@ -15,11 +16,17 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
+			<head>
+				<link rel='icon' href='./default.png' sizes='any' />
+			</head>
 			<body className={inter.className}>
 				<div className='main'>
 					<div className='gradient' />
 				</div>
-				<main className='app'>{children}</main>
+				<main className='app'>
+					<Navbar />
+					{children}
+				</main>
 			</body>
 		</html>
 	);
