@@ -1,0 +1,57 @@
+$shadow-bottom: 0px 13px 12px -5px rgba(0, 0, 0, 0.88);
+$shadow: 0px 3px 10px 6px rgba(0, 0, 0, 0.1);
+$shadow-sm: 1px 1px 2px 2px rgba(211, 211, 211, 0.307);
+$primary: #7c2bac;
+$light_primary: #b292c4;
+$secondary: #f3eef6;
+$text: #0b070d;
+$light_text: #bebebe;
+$bg: #ffffff;
+
+@mixin position($align: center, $justify: center, $flow: row) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	flex-direction: $flow;
+}
+
+@mixin text-gradient($first: $primary, $second: $light_primary) {
+	background: $first;
+	background: linear-gradient(to right, $first 0%, $second 81%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+$breakpoints: (
+	'sm': 700px,
+	'md': 800px,
+	'lg': 1000px,
+	'xl': 1250px,
+);
+
+@mixin sm {
+	@media (max-width: map-get($breakpoints, 'sm')) {
+		@content;
+	}
+}
+@mixin md {
+	@media (max-width: map-get($breakpoints, 'md')) {
+		@content;
+	}
+}
+@mixin lg {
+	@media (max-width: map-get($breakpoints, 'lg')) {
+		@content;
+	}
+}
+@mixin xl {
+	@media (max-width: map-get($breakpoints, 'xl')) {
+		@content;
+	}
+}
+
+@mixin media($bp) {
+	@media (max-width: $bp) {
+		@content;
+	}
+}
