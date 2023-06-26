@@ -1,4 +1,4 @@
 & .register {
-  @include position($align: center, $justify: center, $flow: column);
+  @include position(center, center, column);
   width: 100%;
 }
