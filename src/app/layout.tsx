@@ -19,12 +19,11 @@ export default function RootLayout({
 }) {
 	const pathname = usePathname();
 	const rendernav = pathname === '/register' ? false : true;
-	console.log(pathname);
 
 	return (
 		<html lang='en'>
 			<head>
-				<link rel='icon' href='./default.png' sizes='any' />
+				<link rel='icon' href='./assets/images/logo.png' sizes='any' />
 			</head>
 			<body className={inter.className}>
 				<div className='main'>

@@ -1,4 +1,3 @@
-// import "../../styles/scss/pages/_register.scss";
 
 const Register = () => {
   return (

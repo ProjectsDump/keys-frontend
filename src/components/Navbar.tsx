@@ -4,6 +4,7 @@ import Image from 'next/image';
 import MenuIcon from '@mui/icons-material/Menu';
 // import { NextPage } from 'next';
 import { useState } from 'react';
+import Link from 'next/link';
 
 const Navbar = () => {
 	const [showMobileNav, setShowMobileNav] = useState(false);
@@ -30,7 +31,9 @@ const Navbar = () => {
 				<span className='click_animation'>
 					Generate Secure Password
 				</span>
-				<button className='btn signup-btn'>Sign Up</button>
+				<Link className='Link' href={'/register'}>
+					<button className='btn signup-btn'>Sign Up</button>
+				</Link>
 				<button className='btn login-btn'>Log In</button>
 			</nav>
 

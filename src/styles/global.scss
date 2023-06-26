@@ -63,11 +63,11 @@ a {
 				rgb(17, 0, 255) 0px,
 				transparent 0%
 			),
-			radial-gradient(at 97% 21%, rgb(6, 255, 27) 0px, transparent 50%),
-			radial-gradient(at 52% 99%, rgb(255, 2, 27) 0px, transparent 50%),
+			radial-gradient(at 97% 21%, $primary 0px, transparent 50%),
+			radial-gradient(at 52% 99%, $secondary 0px, transparent 50%),
 			radial-gradient(
 				at 10% 29%,
-				hsla(256, 96%, 67%, 1) 0px,
+				$light_primary 0px,
 				transparent 50%
 			),
 			radial-gradient(at 97% 96%, #7c2bac 0px, transparent 20%),
@@ -107,7 +107,7 @@ a {
 
 .app {
 	position: relative;
-	z-index: 10;
+	z-index: 4;
 	@include position(center, center, column);
 	overflow-x: hidden;
 
@@ -115,5 +115,6 @@ a {
 	@import './scss/components/navbar';
 
 	// pages
-	@import './scss/pages/home'
+	@import './scss/pages/home';
+	@import './scss/pages/register';
 }

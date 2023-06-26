@@ -58,7 +58,7 @@ a {
   z-index: 3;
   width: 100%;
   max-width: 640px;
-  background-image: radial-gradient(at 27% 37%, rgb(17, 0, 255) 0px, transparent 0%), radial-gradient(at 97% 21%, rgb(6, 255, 27) 0px, transparent 50%), radial-gradient(at 52% 99%, rgb(255, 2, 27) 0px, transparent 50%), radial-gradient(at 10% 29%, hsl(256, 96%, 67%) 0px, transparent 50%), radial-gradient(at 97% 96%, #7c2bac 0px, transparent 20%), radial-gradient(at 33% 50%, rgb(136, 161, 219) 0px, transparent 50%), radial-gradient(at 79% 53%, rgb(253, 97, 142) 0px, transparent 50%);
+  background-image: radial-gradient(at 27% 37%, rgb(17, 0, 255) 0px, transparent 0%), radial-gradient(at 97% 21%, #7c2bac 0px, transparent 50%), radial-gradient(at 52% 99%, rgb(255, 103, 47) 0px, transparent 50%), radial-gradient(at 10% 29%, #b292c4 0px, transparent 50%), radial-gradient(at 97% 96%, #7c2bac 0px, transparent 20%), radial-gradient(at 33% 50%, rgb(136, 161, 219) 0px, transparent 50%), radial-gradient(at 79% 53%, rgb(253, 97, 142) 0px, transparent 50%);
   position: absolute;
   content: "";
   width: 100%;
@@ -92,7 +92,7 @@ a {
 
 .app {
   position: relative;
-  z-index: 10;
+  z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,5 +200,103 @@ a {
   margin: 10px 0;
 }
 .app .landing-page {
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+.app .landing-page .hero {
+  width: 90%;
+  height: 90vh;
+  display: flex;
+}
+@media (max-width: 700px) {
+  .app .landing-page .hero {
+    width: 95%;
+  }
+}
+.app .landing-page .hero .hero-text {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+.app .landing-page .hero .hero-text .hero-text-container h1 {
+  background: #7c2bac;
+  background: linear-gradient(to right, #7c2bac 0%, rgb(255, 103, 47) 81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 35px;
+}
+.app .landing-page .hero .hero-text .hero-text-container p {
+  color: #bebebe;
+  margin: 5px 0;
+}
+.app .landing-page .hero .hero-text .hero-text-container .hero-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #7c2bac;
+  padding: 20px 40px;
+  color: white;
+  font-weight: lighter;
+  margin: 40px 0px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  overflow-x: hidden;
+}
+.app .landing-page .hero .hero-text .hero-text-container .hero-btn:hover {
+  background: rgb(255, 103, 47);
+  background: linear-gradient(to right, rgb(255, 103, 47) 0%, #7c2bac 81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #7c2bac;
+  border: 1px solid #7c2bac;
+}
+.app .landing-page .hero .hero-text .hero-text-container .hero-btn:hover .arrow-icon {
+  transform: rotate(360deg);
+  transition: transform 1s ease-out;
+}
+.app .landing-page .hero .hero-text .hero-text-container .hero-btn:active .arrow-icon {
+  transform: translateX(100px);
+  transition: transform 0.2s;
+}
+.app .landing-page .hero .hero-text .hero-text-container .hero-btn .arrow-icon {
+  margin-left: 20px;
+  transition: 0.1s;
+}
+.app .landing-page .hero .hero-img {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+@media (max-width: 700px) {
+  .app .landing-page .hero .hero-img {
+    display: none;
+  }
+}
+.app .landing-page .hero .hero-img .hero-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../../public/assets/images/hero.png");
+}
+.app .landing-page .hero .hero-img .hero-img-container .hero-image {
+  width: 100%;
+  height: 100%;
+}
+.app .register {
+  background-color: red;
 }/*# sourceMappingURL=global.css.map */
