@@ -1,120 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-@import './scss/scssComponents/variables';
+@import "./scss/scssComponents/variables";
 
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
-	font-family: 'josefin Sans', sans-serif;
-	font-size: 15px;
-	transition: 0.2s;
+  box-sizing: border-box;
+  font-family: "josefin Sans", sans-serif;
+  font-size: 15px;
+  transition: 0.2s;
 }
 
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-	margin: 0;
+  margin: 0;
 }
 .Link {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 .btn {
-	border: 0;
-	border-radius: 20px;
-	padding: 10px 20px;
-	background-color: transparent;
-	font-weight: bold;
-	cursor: pointer;
-	&:active {
-		transform: scale(90%);
-		transition: 0.2s;
-	}
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  &:active {
+    transform: scale(90%);
+    transition: 0.2s;
+  }
 }
 .click_animation {
-	&:active {
-		transform: scale(90%);
-		transition: 0.2s;
-	}
+  &:active {
+    transform: scale(90%);
+    transition: 0.2s;
+  }
 }
 
 .main {
-	width: 100vw;
-	min-height: 100vh;
-	position: fixed;
-	display: flex;
-	justify-content: center;
-	padding: 120px 24px 160px 24px;
-	pointer-events: none;
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 120px 24px 160px 24px;
+  pointer-events: none;
 
-	& .gradient {
-		height: fit-content;
-		z-index: 3;
-		width: 100%;
-		max-width: 640px;
-		background-image: radial-gradient(
-				at 27% 37%,
-				rgb(17, 0, 255) 0px,
-				transparent 0%
-			),
-			radial-gradient(at 97% 21%, $primary 0px, transparent 50%),
-			radial-gradient(at 52% 99%, $secondary 0px, transparent 50%),
-			radial-gradient(
-				at 10% 29%,
-				$light_primary 0px,
-				transparent 50%
-			),
-			radial-gradient(at 97% 96%, #7c2bac 0px, transparent 20%),
-			radial-gradient(at 33% 50%, rgb(136, 161, 219) 0px, transparent 50%),
-			radial-gradient(at 79% 53%, rgb(253, 97, 142) 0px, transparent 50%);
-		position: absolute;
-		content: '';
-		width: 100%;
-		height: 100%;
-		filter: blur(50px) saturate(100%);
-		top: 80px;
-		opacity: 0.15;
-	}
+  & .gradient {
+    height: fit-content;
+    z-index: 3;
+    width: 100%;
+    max-width: 640px;
+    background-image: radial-gradient(
+        at 27% 37%,
+        rgb(17, 0, 255) 0px,
+        transparent 0%
+      ),
+      radial-gradient(at 97% 21%, $primary 0px, transparent 50%),
+      radial-gradient(at 52% 99%, $secondary 0px, transparent 50%),
+      radial-gradient(at 10% 29%, $light_primary 0px, transparent 50%),
+      radial-gradient(at 97% 96%, #7c2bac 0px, transparent 20%),
+      radial-gradient(at 33% 50%, rgb(136, 161, 219) 0px, transparent 50%),
+      radial-gradient(at 79% 53%, rgb(253, 97, 142) 0px, transparent 50%);
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    filter: blur(50px) saturate(100%);
+    top: 80px;
+    opacity: 0.15;
+  }
 }
 
 .main:before {
-	background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
-	position: absolute;
-	content: '';
-	z-index: 2;
-	width: 100%;
-	height: 100%;
-	top: 0;
+  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  position: absolute;
+  content: "";
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
 }
 
 .main:after {
-	content: '';
-	background-image: url('../../public/assets/images/grid.svg');
-	z-index: 1;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	opacity: 0.4;
-	filter: invert(1);
+  content: "";
+  background-image: url("../../public/assets/images/grid.svg");
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.4;
+  filter: invert(1);
 }
 
 .app {
-	position: relative;
-	z-index: 4;
-	@include position(center, center, column);
-	overflow-x: hidden;
+  position: relative;
+  z-index: 4;
+  @include position(center, center, column);
+  overflow-x: hidden;
 
-	// components
-	@import './scss/components/navbar';
+  // components
+  @import "./scss/components/navbar";
+  @import "./scss/components/auth";
 
-	// pages
-	@import './scss/pages/home';
-	@import './scss/pages/register';
+  // pages
+  @import "./scss/pages/home";
+  @import "./scss/pages/register";
 }
