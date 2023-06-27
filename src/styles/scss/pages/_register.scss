@@ -1,3 +1,4 @@
 & .register {
-  background-color: red;
+  @include position(center, center, column);
+  width: 100%;
 }
