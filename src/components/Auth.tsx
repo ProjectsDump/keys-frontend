@@ -15,8 +15,8 @@ const Auth = () => {
           <div className="auth-header">
             <p>join our network</p>
             <p>
-              We'd love to have you! join our 100% remote network of writers &
-              freelancers
+              Secure your digital life with our app, generating strong passwords
+              for ultimate online protection.
             </p>
           </div>
 
