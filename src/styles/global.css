@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 *,
 *::before,
 *::after {
@@ -222,8 +222,9 @@ a {
   }
 }
 .app .auth-page .auth-container .auth-logo {
-  height: 115px;
+  height: 110px;
   margin-bottom: 10px;
+  margin-top: -20px;
 }
 .app .auth-page .auth-container .auth-header {
   color: black;
@@ -246,7 +247,7 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  height: 50px;
+  height: 45px;
   border-radius: 5px;
   background-color: white;
   border: 1px solid #b292c4;
@@ -295,7 +296,7 @@ a {
   background: linear-gradient(to right, #7c2bac 0%, rgb(255, 103, 47) 81%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  height: 50px;
+  height: 45px;
   font-size: 17px;
   margin-bottom: -5px;
   outline: none;
@@ -311,20 +312,15 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  height: 55px;
+  height: 50px;
   width: 100%;
-  font-size: 18px;
-  font-weight: 500;
-  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   position: relative;
   background-color: #7c2bac;
-  text-decoration: none;
   overflow: hidden;
   z-index: 1;
-  font-family: inherit;
   margin-top: 35px;
   box-shadow: inset 18px 18px 39px #66238d, inset -18px -18px 39px #9233cb;
 }
@@ -343,6 +339,12 @@ a {
 }
 .app .auth-page .auth-container .auth-btn .auth-create :hover::before {
   transform: translateX(0);
+}
+.app .auth-page .auth-container .auth-btn .auth-create p {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
 }
 .app .auth-page .auth-container .auth-btn .auth-direct {
   display: flex;
