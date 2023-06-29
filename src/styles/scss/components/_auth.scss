@@ -105,7 +105,8 @@
         border-radius: 5px;
         cursor: pointer;
         position: relative;
-        background-color: #7c2bac;
+        background-color: $primary;
+        // background-color: #7c2bac;
         overflow: hidden;
         z-index: 1;
         margin-top: 35px;
