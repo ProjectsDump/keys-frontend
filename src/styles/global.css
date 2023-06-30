@@ -80,7 +80,7 @@ a {
 
 .main:after {
   content: "";
-  background-image: url("../../public/assets/images/grid.svg");
+  background-image: url("/assets/images/grid.svg");
   z-index: 1;
   position: absolute;
   width: 100%;
@@ -212,6 +212,11 @@ a {
 @media (max-width: 700px) {
   .app section.navbar nav.mobile-nav {
     display: block;
+  }
+}
+@media (max-width: 300px) {
+  .app section.navbar nav.mobile-nav {
+    width: 80vw;
   }
 }
 .app section.navbar nav.mobile-nav > * {

@@ -48,12 +48,18 @@ $bg: #ffffff;
 }
 
 $breakpoints: (
+	'xsm': 300px,
 	'sm': 700px,
 	'md': 800px,
 	'lg': 1000px,
 	'xl': 1250px,
 );
 
+@mixin xsm {
+	@media (max-width: map-get($breakpoints, 'xsm')) {
+		@content;
+	}
+}
 @mixin sm {
 	@media (max-width: map-get($breakpoints, 'sm')) {
 		@content;

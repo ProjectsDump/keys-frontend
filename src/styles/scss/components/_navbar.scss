@@ -86,8 +86,12 @@
 			border-radius: 5px;
 			@include position(center, center, column-reverse);
 			display: none;
+
 			@include sm {
 				display: block;
+			}
+			@include xsm {
+				width: 80vw;
 			}
 			& > * {
 				margin: 10px 0;
