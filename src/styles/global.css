@@ -99,15 +99,27 @@ a {
   flex-direction: column;
   overflow-x: hidden;
 }
+.app .navbar-placeholder {
+  width: 100%;
+  height: 10vh;
+}
 .app section.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
   height: 10vh;
   width: 100%;
   padding: 0 50px;
+  border-radius: 0 0 20px 20px;
   box-shadow: 0px 13px 12px -5px rgba(0, 0, 0, 0.103);
+  background-color: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+          backdrop-filter: saturate(180%) blur(10px);
 }
 @media (max-width: 800px) {
   .app section.navbar {
@@ -116,7 +128,7 @@ a {
 }
 @media (max-width: 700px) {
   .app section.navbar {
-    padding: 0 10px;
+    padding: 0 20px;
   }
 }
 .app section.navbar .logo {
@@ -136,11 +148,6 @@ a {
 @media (max-width: 700px) {
   .app section.navbar .toggle-menu-icon {
     display: block;
-  }
-}
-@media (max-width: 700px) {
-  .app section.navbar nav.desktop-nav {
-    display: none;
   }
 }
 .app section.navbar nav > * {
@@ -182,6 +189,11 @@ a {
   color: #7c2bac;
   border: 1px solid #7c2bac;
 }
+@media (max-width: 700px) {
+  .app section.navbar nav.desktop-nav {
+    display: none;
+  }
+}
 .app section.navbar nav.mobile-nav {
   width: 70vw;
   height: 40vh;
@@ -195,6 +207,12 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column-reverse;
+  display: none;
+}
+@media (max-width: 700px) {
+  .app section.navbar nav.mobile-nav {
+    display: block;
+  }
 }
 .app section.navbar nav.mobile-nav > * {
   margin: 10px 0;
@@ -365,8 +383,8 @@ a {
 .app .landing-page {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
+  justify-content: flex-start;
+  flex-direction: column;
   width: 100%;
 }
 .app .landing-page .hero {
@@ -471,6 +489,57 @@ a {
   width: 100%;
   height: 100%;
 }
+.app .landing-page .what-long-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  background-color: #7c2bac;
+  padding: 50px 0;
+  color: white;
+}
+.app .landing-page .what-long-section .what-long-icon {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(255, 103, 47);
+}
+.app .landing-page .what-long-section h1.what-long-head {
+  width: 100%;
+  text-align: center;
+  font-size: 35px;
+}
+.app .landing-page .what-long-section .what-long-body {
+  width: 95%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1.1%;
+}
+@media (max-width: 700px) {
+  .app .landing-page .what-long-section .what-long-body {
+    flex-direction: column;
+    padding: 10px;
+  }
+}
+.app .landing-page .what-long-section .what-long-body .what-long-item {
+  width: 30%;
+}
+@media (max-width: 700px) {
+  .app .landing-page .what-long-section .what-long-body .what-long-item {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #b292c4;
+  }
+}
+.app .landing-page .what-long-section .what-long-body .what-long-item h3 {
+  font-size: 16px;
+}
+.app .landing-page .what-long-section .what-long-body .what-long-item p {
+  color: #bebebe;
+}
 .app .register-page {
   display: flex;
   align-items: center;
@@ -512,6 +581,217 @@ a {
 }
 @media (max-width: 700px) {
   .app .register-page .register .register-details {
+    width: 100%;
+  }
+}
+.app .generate-password-page {
+  width: 90%;
+  min-height: 90vh;
+  height: auto;
+}
+@media (max-width: 700px) {
+  .app .generate-password-page {
+    width: 95%;
+  }
+}
+.app .generate-password-page .generate-head {
+  width: 100%;
+  height: 30vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.app .generate-password-page .generate-head h1 {
+  font-size: 50px;
+  text-transform: capitalize;
+  background: #7c2bac;
+  background: linear-gradient(to right, #7c2bac 0%, rgb(255, 103, 47) 81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media (max-width: 700px) {
+  .app .generate-password-page .generate-head h1 {
+    font-size: 30px;
+  }
+}
+.app .generate-password-page .generate-head p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0b070d;
+}
+@media (max-width: 700px) {
+  .app .generate-password-page .generate-head p {
+    font-size: 15px;
+    font-weight: lighter;
+  }
+}
+.app .generate-password-page .generate-body {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+}
+@media (max-width: 700px) {
+  .app .generate-password-page .generate-body {
+    flex-direction: column;
+  }
+}
+.app .generate-password-page .generate-body .strength-img-container {
+  width: 35%;
+}
+@media (max-width: 700px) {
+  .app .generate-password-page .generate-body .strength-img-container {
+    width: 100%;
+  }
+}
+.app .generate-password-page .generate-body .strength-img-container .strength-img {
+  width: 100%;
+  height: auto;
+}
+.app .generate-password-page .generate-body .generate-form-container {
+  width: 63%;
+  padding: 30px;
+}
+@media (max-width: 700px) {
+  .app .generate-password-page .generate-body .generate-form-container {
+    width: 100%;
+    padding: 0;
+  }
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+@media (max-width: 800px) {
+  .app .generate-password-page .generate-body .generate-form-container .generate-item {
+    margin-top: 30px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+  background-color: white;
+  border-radius: 30px;
+}
+@media (max-width: 700px) {
+  .app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 20px;
+  }
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container input {
+  padding: 10px;
+  border: none;
+  width: 400px;
+}
+@media (max-width: 800px) {
+  .app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container input {
+    width: 200px;
+  }
+}
+@media (max-width: 700px) {
+  .app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container input {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container input:focus {
+  outline: none;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container .input-container-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+@media (max-width: 700px) {
+  .app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container .input-container-actions {
+    gap: 20px;
+  }
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container .input-container-actions .icon {
+  cursor: pointer;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.first .input-container .input-container-actions span.strength-tag {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #43ed9c;
+  font-weight: bold;
+  color: white;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.second {
+  justify-content: space-between;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.second .check {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.second .check .checkbox {
+  color: #7c2bac;
+  font-size: 20px;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.second .check .label {
+  font-weight: bold;
+  color: #7c2bac;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.third {
+  justify-content: space-between;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.third .slider-container .slider-icon-container {
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #b292c4;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.third .slider-container .slider-icon-container .slider-icon {
+  color: #7c2bac;
+  font-size: 20px;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.third .slider-container .slider-icon-container:hover {
+  background-color: #b292c4;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.third .slider-container .slider-icon-container:hover .slider-icon {
+  color: white;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item.third .slider-container .slider {
+  color: #7c2bac;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item .generate-label {
+  width: 30%;
+}
+@media (max-width: 800px) {
+  .app .generate-password-page .generate-body .generate-form-container .generate-item .generate-label {
+    width: 100%;
+  }
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item .generate-label span.title-label {
+  font-size: 20px;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item .generate-label .title-label-ans {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+.app .generate-password-page .generate-body .generate-form-container .generate-item .generate-params {
+  width: 65%;
+}
+@media (max-width: 800px) {
+  .app .generate-password-page .generate-body .generate-form-container .generate-item .generate-params {
     width: 100%;
   }
 }/*# sourceMappingURL=global.css.map */

@@ -30,7 +30,12 @@ export default function RootLayout({
 					<div className='gradient' />
 				</div>
 				<main className='app'>
-					{rendernav && <Navbar />}
+					{rendernav && (
+						<>
+							<Navbar />{' '}
+							<div className='navbar-placeholder' />
+						</>
+					)}
 					{children}
 				</main>
 			</body>

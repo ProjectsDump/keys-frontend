@@ -18,19 +18,23 @@ const Navbar = () => {
 	return (
 		<section className='navbar'>
 			<div className='logo'>
-				<Image
-					src='/logo/vector/default-monochrome.svg'
-					alt='logo'
-					className='logo-img'
-					fill
-				/>
+				<Link className='Link' href={'/'}>
+					<Image
+						src='/logo/vector/default-monochrome.svg'
+						alt='logo'
+						className='logo-img'
+						fill
+					/>
+				</Link>
 			</div>
 
 			{/* Desktop navbar */}
 			<nav className={`desktop-nav`}>
-				<span className='click_animation'>
-					Generate Secure Password
-				</span>
+				<Link className='Link' href={'/generate-password'}>
+					<span className='click_animation'>
+						Generate Secure Password
+					</span>
+				</Link>
 				<Link className='Link' href={'/register'}>
 					<button className='btn signup-btn'>Sign Up</button>
 				</Link>
@@ -41,10 +45,14 @@ const Navbar = () => {
 			<div className='toggle-menu-icon'>
 				<MenuIcon onClick={() => setShowMobileNav((prev) => !prev)} />
 				<nav style={mediaStyle()} className={`mobile-nav`}>
-					<span className='click_animation'>
-						Generate Secure Password
-					</span>
-					<button className='btn signup-btn'>Sign Up</button>
+					<Link className='Link' href={'/generate-password'}>
+						<span className='click_animation'>
+							Generate Secure Password
+						</span>
+					</Link>
+					<Link className='Link' href={'/register'}>
+						<button className='btn signup-btn'>Sign Up</button>
+					</Link>
 					<button className='btn login-btn'>Log In</button>
 				</nav>
 			</div>

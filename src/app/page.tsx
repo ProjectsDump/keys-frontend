@@ -3,6 +3,10 @@
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
 import Link from "next/link";
+import { FcBookmark } from "react-icons/fc";
+import PasswordIcon from '@mui/icons-material/Password';
+import VpnLockIcon from '@mui/icons-material/VpnLock';
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
 
 export default function Home() {
   return (
@@ -37,6 +41,32 @@ export default function Home() {
             />
           </div>
         </div>
+      </div>
+      <div className="what-long-section">
+          <h1 className="what-long-head">What Makes A Password Secure?</h1>
+          <div className="what-long-body">
+            <div className="what-long-item first">
+              <FingerprintIcon className="what-long-icon" />
+              <h3>Unique</h3>
+              <p>
+                A secure password should be unique to each accound to reduce vulnerability in event of a hack. 
+              </p>
+            </div>
+            <div className="what-long-item second">
+              <PasswordIcon className="what-long-icon"/>
+              <h3>Long</h3>
+              <p>
+                A secure password should have at least 10 characters. The longer the password the more secure it is.
+              </p>
+            </div>
+            <div className="what-long-item second">
+              <VpnLockIcon className="what-long-icon"/>
+              <h3>Complex</h3>
+              <p>
+                A secure password should be a complex combination of different characters, numbers and symbols to form a random string that doesn't resemble a name or a normal word. 
+              </p>
+            </div>
+          </div>
       </div>
     </section>
   );

@@ -1,11 +1,10 @@
 & .landing-page {
-	@include position;
+	@include position(center, flex-start, column);
 	width: 100%;
 	& .hero {
 		width: 90%;
 		height: 90vh;
 		display: flex;
-	
 
 		@include sm {
 			width: 95%;
@@ -16,9 +15,9 @@
 			@include position(flex-start, center, column);
 			& .hero-text-container {
 				& h1 {
-					@include gradient();
+					@include text-gradient();
 					font-size: 35px;
-					@include sm{
+					@include sm {
 						margin-bottom: 50px;
 					}
 				}
@@ -36,12 +35,12 @@
 					border-radius: 5px;
 					border: 1px solid transparent;
 					overflow-x: hidden;
-					@include sm{
+					@include sm {
 						margin-top: 50px;
 					}
 
 					&:hover {
-						@include gradient($secondary, $primary);
+						@include text-gradient($secondary, $primary);
 						color: $primary;
 						border: 1px solid $primary;
 
@@ -53,13 +52,13 @@
 					&:active {
 						& .arrow-icon {
 							transform: translateX(100px);
-							transition: transform 0.2s ;
+							transition: transform 0.2s;
 						}
 					}
 
 					& .arrow-icon {
 						margin-left: 20px;
-						transition: 0.1s ;
+						transition: 0.1s;
 					}
 				}
 			}
@@ -76,17 +75,61 @@
 				@include position;
 				width: 100%;
 				height: 70%;
-				@include md{
+				@include md {
 					height: 50%;
 				}
-				// background-position: center;
-				// background-repeat: no-repeat;
-				// background-size: contain;
-				// background-image: url('../../public/assets/images/hero.png');
 
-				& .hero-image{
+				& .hero-image {
 					width: 100%;
 					height: 100%;
+				}
+			}
+		}
+	}
+
+	& .what-long-section {
+		@include position(center, flex-start, column);
+		width: 100%;
+		background-color: $primary;
+		padding: 50px 0;
+		color: white;
+		// @include bg-gradient();
+
+		& .what-long-icon{
+			font-size: 30px;
+			font-weight: bold;
+			color: $secondary;
+		}
+
+		& h1.what-long-head {
+			width: 100%;
+			text-align: center;
+			font-size: 35px;
+		}
+
+		& .what-long-body {
+			width: 95%;
+			@include position(flex-start);
+			gap: 1.1%;
+			@include sm {
+				flex-direction: column;
+				padding: 10px;
+			}
+
+			& .what-long-item{
+				width: 30%;
+				@include sm{
+					width: 100%;
+					text-align: center;
+					padding: 20px 0;
+					border-bottom: 1px solid $light_primary;
+				}
+
+				& h3{
+					font-size: 16px;
+				}
+				& p{
+					color: $light_text;
 				}
 			}
 		}
