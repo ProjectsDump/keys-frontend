@@ -1,95 +1,73 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Image from "next/image";
+import Link from "next/link";
+import { FcBookmark } from "react-icons/fc";
+import PasswordIcon from '@mui/icons-material/Password';
+import VpnLockIcon from '@mui/icons-material/VpnLock';
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+    <section className="landing-page">
+      <div className="hero">
+        <div className="hero-text">
+          <div className="hero-text-container">
+            <h1>Generate And Save Secure Passwords</h1>
+            <p>
+              Never forget or have to click on forgot password to remember your
+              passwords
+            </p>
+            <p>
+              Generate complex and secure passwords that can be used anywhere
+            </p>
+            <Link className="Link" href={"/register"}>
+              <button className="btn hero-btn">
+                Get Started <ArrowForwardIcon className="arrow-icon" />
+              </button>
+            </Link>
+          </div>
+        </div>
+        <div className="hero-img">
+          <div className="hero-img-container">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+              alt="hero"
+              className="hero-image"
+              src="/assets/images/hero.png"
+              width={0}
+              height={0}
+              sizes="100vw"
             />
-          </a>
+          </div>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="what-long-section">
+          <h1 className="what-long-head">What Makes A Password Secure?</h1>
+          <div className="what-long-body">
+            <div className="what-long-item first">
+              <FingerprintIcon className="what-long-icon" />
+              <h3>Unique</h3>
+              <p>
+                A secure password should be unique to each accound to reduce vulnerability in event of a hack. 
+              </p>
+            </div>
+            <div className="what-long-item second">
+              <PasswordIcon className="what-long-icon"/>
+              <h3>Long</h3>
+              <p>
+                A secure password should have at least 10 characters. The longer the password the more secure it is.
+              </p>
+            </div>
+            <div className="what-long-item second">
+              <VpnLockIcon className="what-long-icon"/>
+              <h3>Complex</h3>
+              <p>
+                A secure password should be a complex combination of different characters, numbers and symbols to form a random string that doesn't resemble a name or a normal word. 
+              </p>
+            </div>
+          </div>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </section>
+  );
 }

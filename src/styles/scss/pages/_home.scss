@@ -1,0 +1,136 @@
+& .landing-page {
+	@include position(center, flex-start, column);
+	width: 100%;
+	& .hero {
+		width: 90%;
+		height: 90vh;
+		display: flex;
+
+		@include sm {
+			width: 95%;
+		}
+
+		& .hero-text {
+			flex: 1;
+			@include position(flex-start, center, column);
+			& .hero-text-container {
+				& h1 {
+					@include text-gradient();
+					font-size: 35px;
+					@include sm {
+						margin-bottom: 50px;
+					}
+				}
+				& p {
+					color: $light_text;
+					margin: 5px 0;
+				}
+				& .hero-btn {
+					@include position;
+					background-color: $primary;
+					padding: 20px 40px;
+					color: white;
+					font-weight: lighter;
+					margin: 40px 0px;
+					border-radius: 5px;
+					border: 1px solid transparent;
+					overflow-x: hidden;
+					@include sm {
+						margin-top: 50px;
+					}
+
+					&:hover {
+						@include text-gradient($secondary, $primary);
+						color: $primary;
+						border: 1px solid $primary;
+
+						& .arrow-icon {
+							transform: rotate(360deg);
+							transition: transform 1s ease-out;
+						}
+					}
+					&:active {
+						& .arrow-icon {
+							transform: translateX(100px);
+							transition: transform 0.2s;
+						}
+					}
+
+					& .arrow-icon {
+						margin-left: 20px;
+						transition: 0.1s;
+					}
+				}
+			}
+		}
+		& .hero-img {
+			height: 100%;
+			flex: 1;
+			@include position;
+			@include sm {
+				display: none;
+			}
+
+			& .hero-img-container {
+				@include position;
+				width: 100%;
+				height: 70%;
+				@include md {
+					height: 50%;
+				}
+
+				& .hero-image {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+
+	& .what-long-section {
+		@include position(center, flex-start, column);
+		width: 100%;
+		background-color: $primary;
+		padding: 50px 0;
+		color: white;
+
+		& .what-long-icon{
+			font-size: 30px;
+			font-weight: bold;
+			color: $secondary;
+		}
+
+		& h1.what-long-head {
+			width: 100%;
+			text-align: center;
+			font-size: 35px;
+		}
+
+		& .what-long-body {
+			width: 95%;
+			@include position(flex-start);
+			gap: 1.1%;
+			@include sm {
+				flex-direction: column;
+				padding: 10px;
+			}
+
+			& .what-long-item{
+				width: 30%;
+				@include sm{
+					width: 100%;
+					text-align: center;
+					padding: 20px 0;
+					border-bottom: 1px solid $light_primary;
+				}
+
+				& h3{
+					font-size: 16px;
+				}
+				& p{
+					color: $light_text;
+				}
+			}
+		}
+	}
+}

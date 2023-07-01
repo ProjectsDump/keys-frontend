@@ -1,0 +1,34 @@
+& .register-page {
+  @include position(center, center, column);
+  width: 100%;
+  & .register {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+
+    @include sm {
+      width: 100%;
+    }
+    & .register-image {
+      width: 62%;
+      height: 100%;
+      background-color: red;
+      @include sm {
+        display: none;
+      }
+      & .register-jpg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    & .register-details {
+      @include position(center, center, column);
+      width: 38%;
+      height: 100%;
+
+      @include sm {
+        width: 100%;
+      }
+    }
+  }
+}
