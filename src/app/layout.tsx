@@ -7,10 +7,10 @@ import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-	title: 'LockBox app',
-	description: 'Generate and save secure passwords',
-};
+// export const metadata = {
+// 	title: 'LockBox app',
+// 	description: 'Generate and save secure passwords',
+// };
 
 export default function RootLayout({
 	children,
