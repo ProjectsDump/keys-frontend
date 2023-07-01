@@ -403,6 +403,7 @@ a {
 @media (max-width: 700px) {
   .app .generate-body .strength-img-container {
     width: 100%;
+    height: 40vh;
   }
 }
 .app .generate-body .strength-img-container .strength-img {
