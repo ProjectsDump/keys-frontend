@@ -22,7 +22,7 @@ const Generator = () => {
 	const MIN_LENGTH = 1;
 	const MAX_LENGTH = 50;
 
-	const handleLengthChange = (e, type: string) => {
+	const handleLengthChange = (e: any, type: string) => {
 		// handle slider change
 		if (type === 'slide') {
 			setPasswordLength(e.target.value);
