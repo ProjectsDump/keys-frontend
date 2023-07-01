@@ -1,7 +1,7 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
 import '../styles/global.css';
+import Navbar from '@/components/Navbar';
 import { Inter } from 'next/font/google';
 import { usePathname } from 'next/navigation';
 
