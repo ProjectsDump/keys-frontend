@@ -1,16 +1,16 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
 import '../styles/global.css';
+import Navbar from '@/components/Navbar';
 import { Inter } from 'next/font/google';
 import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-	title: 'LockBox app',
-	description: 'Generate and save secure passwords',
-};
+// export const metadata = {
+// 	title: 'LockBox app',
+// 	description: 'Generate and save secure passwords',
+// };
 
 export default function RootLayout({
 	children,
@@ -30,7 +30,12 @@ export default function RootLayout({
 					<div className='gradient' />
 				</div>
 				<main className='app'>
-					{rendernav && <Navbar />}
+					{rendernav && (
+						<>
+							<Navbar />{' '}
+							<div className='navbar-placeholder' />
+						</>
+					)}
 					{children}
 				</main>
 			</body>

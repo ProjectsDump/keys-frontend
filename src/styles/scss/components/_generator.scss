@@ -1,0 +1,208 @@
+& .generate-body {
+	width: 100%;
+	min-height: 60vh;
+	display: flex;
+
+	@include sm {
+		flex-direction: column;
+	}
+
+	& .strength-img-container {
+		position: relative;
+		width: 35%;
+		overflow: hidden;
+		@include sm {
+			width: 100%;
+			height: 40vh;
+		}
+		& .strength-img {
+			width: 100%;
+			height: auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+	& .generate-form-container {
+		width: 63%;
+		padding: 30px;
+
+		@include sm {
+			width: 100%;
+			padding: 0;
+		}
+
+		& .generate-item {
+			width: 100%;
+			margin-top: 20px;
+			@include position(center, flex-start);
+
+			@include md {
+				margin-top: 30px;
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			&.first {
+				& .first-container {
+					width: 100%;
+					display: flex;
+					gap: 10px;
+
+					@include md {
+						flex-direction: column;
+					}
+
+					& .input-container {
+						width: 75%;
+						padding: 10px 20px;
+						@include position;
+						gap: 20px;
+						background-color: white;
+						border-radius: 30px;
+
+						@include md{
+							width: 100%;
+						}
+						@include sm {
+							flex-direction: column;
+							border-radius: 20px;
+						}
+
+						& input {
+							padding: 10px;
+							border: none;
+							width: 400px;
+							@include md {
+								width: 200px;
+							}
+							@include sm {
+								width: 100%;
+								margin-bottom: 5px;
+								padding: 5px;
+							}
+							&:focus {
+								outline: none;
+							}
+						}
+
+						& .input-container-actions {
+							@include position;
+							gap: 10px;
+							@include sm {
+								gap: 20px;
+							}
+							& .icon {
+								cursor: pointer;
+							}
+							& span.strength-tag {
+								padding: 5px 10px;
+								border-radius: 10px;
+								background-color: #43ed9c;
+								font-weight: bold;
+								color: white;
+							}
+						}
+					}
+					& .save-btn {
+						width: 20%;
+						@include position;
+						background-color: $secondary;
+						// padding: 15px 25px;
+						color: white;
+						border: 1px solid $secondary;
+						border-radius: 30px;
+						&:hover {
+							color: $secondary;
+							border-color: $secondary;
+							background-color: transparent;
+						}
+
+						@include md{
+							width: 100%;
+							margin-top: 20px;
+						}
+					}
+				}
+			}
+			&.second {
+				justify-content: space-between;
+				& .check {
+					display: flex;
+					gap: 20px;
+					flex-wrap: wrap;
+					& .checkbox {
+						color: $primary;
+						font-size: 20px;
+					}
+					& .label {
+						font-weight: bold;
+						color: $primary;
+					}
+				}
+			}
+			&.third {
+				justify-content: space-between;
+				& .slider-container {
+					& .slider-icon-container {
+						padding: 15px;
+						border-radius: 50%;
+						cursor: pointer;
+						background-color: transparent;
+						border: 1px solid $light_primary;
+
+						&:disabled {
+							// display: none;
+							background-color: lightgrey;
+							border-color: grey;
+
+							& .slider-icon {
+								color: white;
+							}
+							&:hover {
+								background-color: lightgrey;
+								border-color: grey;
+								color: white;
+							}
+						}
+
+						& .slider-icon {
+							color: $primary;
+							font-size: 20px;
+						}
+						&:hover {
+							& .slider-icon {
+								color: white;
+							}
+							background-color: $light_primary;
+						}
+					}
+					& .slider {
+						color: $primary;
+					}
+				}
+			}
+
+			& .generate-label {
+				width: 30%;
+				@include md {
+					width: 100%;
+				}
+				& span.title-label {
+					font-size: 20px;
+				}
+				& .title-label-ans {
+					font-size: 20px;
+					font-weight: bold;
+					margin-left: 20px;
+				}
+			}
+			& .generate-params {
+				width: 65%;
+				@include md {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
