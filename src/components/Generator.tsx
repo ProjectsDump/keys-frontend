@@ -6,23 +6,49 @@ import { Checkbox, FormControlLabel, Slider, Stack } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useState } from 'react';
+import { passwordGeneratorFunc } from '@/utils/password-generator-func';
+import { StrengthInterface } from '@/utils/Interfaces';
 
 const Generator = () => {
-	const [passwordLength, setPasswordLength] = useState(10);
-	const [removeDisabled, setRemoveDisabled] = useState(false);
-	const [addDisabled, setAddDisabled] = useState(false);
-	const [passStrength, setPassStrength] = useState('very-strong');
-	const [passParams, setPassParams] = useState({
+	// Note we should be able to change this to a useRedecer because  this looks too rough buh that one nah later
+
+	// password length state
+	const [passwordLength, setPasswordLength] = useState<number>(10);
+	// remove btn disabled status
+	const [removeDisabled, setRemoveDisabled] = useState<boolean>(false);
+	// add btn disabled status
+	const [addDisabled, setAddDisabled] = useState<boolean>(false);
+	// password strength
+	const [passStrength, setPassStrength] = useState<
+		'very-strong' | 'strong' | 'good' | 'weak'
+	>('very-strong');
+	// password parameters
+	const [passParams, setPassParams] = useState<StrengthInterface>({
 		uppercase: true,
 		lowercase: true,
 		integer: true,
 		special: true,
 	});
+	// password gan gan
+	const [password, setPassword] = useState(
+		passwordGeneratorFunc(passwordLength, passParams)
+	);
 
-	const MIN_LENGTH = 1;
-	const MAX_LENGTH = 50;
+	const [copied, setCopied] = useState(false);
 
+	// min and max length of password
+	const MIN_LENGTH: number = 1;
+	const MAX_LENGTH: number = 50;
+
+	// generate and refresh password
+	const handleGenerate = () => {
+		// function to geme=nerate password
+		setPassword(passwordGeneratorFunc(passwordLength, passParams));
+	};
+
+	// increase or decrease password length
 	const handleLengthChange = (e: any, type: string) => {
+		e.preventDefault();
 		// handle slider change
 		if (type === 'slide') {
 			setPasswordLength(e.target.value);
@@ -30,41 +56,59 @@ const Generator = () => {
 
 		// handle remove btn click
 		if (type === 'remove') {
-			setPasswordLength((prev) => prev - 1);
+			setPasswordLength((prev) => {
+				console.log(prev);
+				return prev--;
+			});
 		}
 		// handle add btn click
 		if (type === 'add') {
-			setPasswordLength((prev) => prev + 1);
+			setPasswordLength(passwordLength + 1);
 		}
-		// handle btn enable on btn click
-		if (passwordLength <= MIN_LENGTH) {
+
+		// console.log('----------');
+		// console.log(type);
+		// console.log(passwordLength);
+		// console.log('----------');
+
+		// check length to disable btn
+		if (passwordLength + 1 === MIN_LENGTH) {
 			setRemoveDisabled(true);
 		}
-		// handle btn enable on btn click
-		if (passwordLength >= MAX_LENGTH) {
+		if (passwordLength + 1 >= MAX_LENGTH) {
 			setAddDisabled(true);
 		}
 
-		// check length to disable btn
-		if (passwordLength <= MAX_LENGTH) {
+		// handle btn disable on btn click
+		if (passwordLength + 1 < MAX_LENGTH) {
 			setAddDisabled(false);
 		}
-		if (passwordLength >= MIN_LENGTH) {
+		// handle btn disable on btn click
+		if (passwordLength + 1 > MIN_LENGTH) {
 			setRemoveDisabled(false);
 		}
 
 		// check length to change strength
-		if (passwordLength <= 2) {
+		if (passwordLength + 1 <= 2) {
 			setPassStrength('weak');
-		} else if (passwordLength > 2 && passwordLength <= 5) {
+		} else if (passwordLength + 1 > 2 && passwordLength + 1 <= 5) {
 			setPassStrength('good');
-		} else if (passwordLength > 5 && passwordLength <= 8) {
+		} else if (passwordLength + 1 > 5 && passwordLength + 1 <= 8) {
 			setPassStrength('strong');
 		} else {
 			setPassStrength('very-strong');
 		}
 	};
 
+	const handleCopy = () => {
+		setCopied(true);
+		navigator.clipboard.writeText(password);
+		setTimeout(() => {
+			setCopied(false);
+		}, 3000);
+	};
+
+	// func to slide img in on password length change
 	const strengthImgFunc = (type: string) => ({
 		transform: passStrength === type ? 'translateX(0)' : 'translateX(100%)',
 	});
@@ -107,21 +151,34 @@ const Generator = () => {
 					height={0}
 					className='strength-img'
 				/>
-			</div>
+			</div> 
 			<div className='generate-form-container'>
 				<div className='generate-item first'>
 					<div className='first-container'>
 						<div className='input-container'>
-							<input type='text' />
+							<input
+								onChange={(e) => {
+									setPassword(e.target.value);
+								}}
+								value={password}
+								type='text'
+							/>
 							<div className='input-container-actions'>
-								<Image
-									src={'/assets/icons/copy.svg'}
-									alt='copy'
-									title='Copy'
-									height={20}
-									width={20}
-									className='icon'
-								/>
+								<span onClick={handleCopy}>
+									<Image
+										src={
+											copied
+												? '/assets/icons/tick.svg'
+												: '/assets/icons/copy.svg'
+										}
+										alt='copy'
+										title={copied ? 'Copied' : 'Copy'}
+										height={20}
+										width={20}
+										className='icon'
+									/>
+								</span>
+
 								<span className='strength-tag'>
 									{passStrength === 'very-strong'
 										? 'very strong'
@@ -133,7 +190,10 @@ const Generator = () => {
 										? 'weak'
 										: null}
 								</span>
-								<RefreshIcon className='icon' />
+								<RefreshIcon
+									onClick={handleGenerate}
+									className='icon'
+								/>
 							</div>
 						</div>
 						<button className='btn save-btn'>Save</button>
@@ -146,9 +206,7 @@ const Generator = () => {
 					<div className='generate-params check'>
 						<FormControlLabel
 							checked={passParams.uppercase}
-							control={
-								<Checkbox defaultChecked className='checkbox' />
-							}
+							control={<Checkbox className='checkbox' />}
 							className='label'
 							label={<span className='label'>ABC</span>}
 							onChange={() =>
