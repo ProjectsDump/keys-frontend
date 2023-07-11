@@ -33,7 +33,6 @@ const Generator = () => {
 	const [password, setPassword] = useState(
 		passwordGeneratorFunc(passwordLength, passParams)
 	);
-
 	const [copied, setCopied] = useState(false);
 
 	// min and max length of password
@@ -98,6 +97,9 @@ const Generator = () => {
 		} else {
 			setPassStrength('very-strong');
 		}
+
+		// generate password
+		setPassword(passwordGeneratorFunc(passwordLength, passParams));
 	};
 
 	const handleCopy = () => {
@@ -151,7 +153,7 @@ const Generator = () => {
 					height={0}
 					className='strength-img'
 				/>
-			</div> 
+			</div>
 			<div className='generate-form-container'>
 				<div className='generate-item first'>
 					<div className='first-container'>
@@ -209,45 +211,72 @@ const Generator = () => {
 							control={<Checkbox className='checkbox' />}
 							className='label'
 							label={<span className='label'>ABC</span>}
-							onChange={() =>
+							onChange={() => {
 								setPassParams((prev) => ({
 									...prev,
 									uppercase: !prev.uppercase,
-								}))
-							}
+								}));
+								setPassword(
+									passwordGeneratorFunc(
+										passwordLength,
+										passParams
+									)
+								);
+							}}
 						/>
 						<FormControlLabel
 							checked={passParams.lowercase}
 							control={<Checkbox className='checkbox' />}
 							label={<span className='label'>abc</span>}
-							onChange={() =>
+							onChange={() => {
 								setPassParams((prev) => ({
 									...prev,
 									lowercase: !prev.lowercase,
-								}))
-							}
+								}));
+								setPassword(
+									passwordGeneratorFunc(
+										passwordLength,
+										passParams
+									)
+								);
+							}}
 						/>
 						<FormControlLabel
 							checked={passParams.integer}
 							control={<Checkbox className='checkbox' />}
 							label={<span className='label'>123</span>}
-							onChange={() =>
+							onChange={() => {
 								setPassParams((prev) => ({
 									...prev,
 									integer: !prev.integer,
-								}))
-							}
+								}));
+								setPassword(
+									passwordGeneratorFunc(
+										passwordLength,
+										passParams
+									)
+								);
+							}}
 						/>
 						<FormControlLabel
 							checked={passParams.special}
 							control={<Checkbox className='checkbox' />}
 							label={<span className='label'>#$&</span>}
-							onChange={() =>
+							onChange={() => {
 								setPassParams((prev) => ({
 									...prev,
 									special: !prev.special,
-								}))
-							}
+								}));
+								if(passParams.special){
+									
+								}
+								setPassword(
+									passwordGeneratorFunc(
+										passwordLength,
+										passParams
+									)
+								);
+							}}
 						/>
 					</div>
 				</div>
