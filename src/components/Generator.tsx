@@ -45,63 +45,66 @@ const Generator = () => {
 		setPassword(passwordGeneratorFunc(passwordLength, passParams));
 	};
 
-	// increase or decrease password length
-	const handleLengthChange = (e: any, type: string) => {
-		e.preventDefault();
-		// handle slider change
-		if (type === 'slide') {
-			setPasswordLength(e.target.value);
-		}
-
-		// handle remove btn click
-		if (type === 'remove') {
-			setPasswordLength((prev) => {
-				console.log(prev);
-				return prev--;
-			});
-		}
-		// handle add btn click
-		if (type === 'add') {
-			setPasswordLength(passwordLength + 1);
-		}
-
-		// console.log('----------');
-		// console.log(type);
-		// console.log(passwordLength);
-		// console.log('----------');
-
-		// check length to disable btn
-		if (passwordLength + 1 === MIN_LENGTH) {
-			setRemoveDisabled(true);
-		}
-		if (passwordLength + 1 >= MAX_LENGTH) {
-			setAddDisabled(true);
-		}
-
-		// handle btn disable on btn click
-		if (passwordLength + 1 < MAX_LENGTH) {
-			setAddDisabled(false);
-		}
-		// handle btn disable on btn click
-		if (passwordLength + 1 > MIN_LENGTH) {
-			setRemoveDisabled(false);
-		}
+	// check length of password to change status
+	const checkPasswordStrength = () => {
+		const validPasswordLength = passwordLength + 1;
+		console.log(validPasswordLength);
+		
 
 		// check length to change strength
-		if (passwordLength + 1 <= 2) {
+		if (validPasswordLength <= 2) {
 			setPassStrength('weak');
-		} else if (passwordLength + 1 > 2 && passwordLength + 1 <= 5) {
+		} else if (validPasswordLength > 2 && validPasswordLength <= 5) {
 			setPassStrength('good');
-		} else if (passwordLength + 1 > 5 && passwordLength + 1 <= 8) {
+		} else if (validPasswordLength > 5 && validPasswordLength <= 8) {
 			setPassStrength('strong');
-		} else {
+		} else if(validPasswordLength > 8) {
 			setPassStrength('very-strong');
 		}
 
-		// generate password
-		setPassword(passwordGeneratorFunc(passwordLength, passParams));
+		// check length to disable btn
+		if (validPasswordLength <= MIN_LENGTH) {
+			setRemoveDisabled(true);
+		}
+		// handle btn enable on btn click
+		else if (validPasswordLength < MAX_LENGTH) {
+			setAddDisabled(false);
+		}
+
+		if (validPasswordLength >= MAX_LENGTH) {
+			setAddDisabled(true);
+		}
+		// handle btn enable on btn click
+		else if (validPasswordLength > MIN_LENGTH) {
+			setRemoveDisabled(false);
+		}
 	};
 
+	// change length of password on btn click
+	const handleBtnClick = (type: string) => {
+		// handle remove btn click
+		if (type === 'remove') {
+			setPasswordLength(passwordLength - 1);
+		}
+		// handle add btn click
+		else if (type === 'add') {
+			setPasswordLength(passwordLength + 1);
+		}
+		checkPasswordStrength();
+		handleGenerate();
+	};
+
+	// handle slider
+	const handleSlider = (e: any) => {
+		e.preventDefault();
+		// handle slider change
+		setPasswordLength(e.target.value);
+		// generate password
+		checkPasswordStrength();
+		handleGenerate();
+	};
+
+	// copy generated password
 	const handleCopy = () => {
 		setCopied(true);
 		navigator.clipboard.writeText(password);
@@ -181,7 +184,20 @@ const Generator = () => {
 									/>
 								</span>
 
-								<span className='strength-tag'>
+								<span
+									style={{
+										backgroundColor:
+											passStrength === 'very-strong'
+												? '#43ed9c'
+												: passStrength === 'strong'
+												? 'lightblue'
+												: passStrength === 'good'
+												? 'orange'
+												: passStrength === 'weak'
+												? 'red'
+												: 'lightblue',
+									}}
+									className='strength-tag'>
 									{passStrength === 'very-strong'
 										? 'very strong'
 										: passStrength === 'strong'
@@ -267,8 +283,7 @@ const Generator = () => {
 									...prev,
 									special: !prev.special,
 								}));
-								if(passParams.special){
-									
+								if (passParams.special) {
 								}
 								setPassword(
 									passwordGeneratorFunc(
@@ -297,9 +312,7 @@ const Generator = () => {
 								type='button'
 								disabled={removeDisabled}
 								className='slider-icon-container'
-								onClick={(e) =>
-									handleLengthChange(e, 'remove')
-								}>
+								onClick={() => handleBtnClick('remove')}>
 								<RemoveIcon className='slider-icon' />
 							</button>
 
@@ -308,7 +321,7 @@ const Generator = () => {
 								size='small'
 								valueLabelDisplay='auto'
 								value={passwordLength}
-								onChange={(e) => handleLengthChange(e, 'slide')}
+								onChange={(e) => handleSlider(e)}
 								min={MIN_LENGTH}
 								max={MAX_LENGTH}
 								className='slider'
@@ -317,7 +330,7 @@ const Generator = () => {
 								type='button'
 								disabled={addDisabled}
 								className='slider-icon-container'
-								onClick={(e) => handleLengthChange(e, 'add')}>
+								onClick={() => handleBtnClick('add')}>
 								<AddIcon className='slider-icon' />
 							</button>
 						</Stack>

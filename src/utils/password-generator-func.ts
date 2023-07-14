@@ -16,15 +16,12 @@ export const passwordGeneratorFunc = (passLength: number, passParams: StrengthIn
     // change used parameters to an array
     const parameters: (string | undefined)[] = Object.keys(passParams).map(
         (key: string) => {
-            console.log(passParams);
             const isParamUsed = passParams[key as keyof typeof passParams]
             if (isParamUsed) {
                 return key;
             }
         }
     );
-    console.log(parameters);
-
 
     // create an array of used parameters
     const PARAMETERS_USED = () => {
