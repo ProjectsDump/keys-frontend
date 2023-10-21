@@ -3,16 +3,22 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FcBookmark } from 'react-icons/fc';
 import PasswordIcon from '@mui/icons-material/Password';
 import VpnLockIcon from '@mui/icons-material/VpnLock';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
+import { useEffect } from 'react'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 export default function Home() {
+	useEffect(() => {
+		AOS.init();
+	}, []);
 	return (
 		<section className='landing-page'>
 			<div className='hero'>
-				<div className='hero-text'>
+				<div className='hero-text' data-aos='fade-right'>
 					<div className='hero-text-container'>
 						<h1>Generate And Save Secure Passwords</h1>
 						<p>
@@ -31,7 +37,7 @@ export default function Home() {
 						</Link>
 					</div>
 				</div>
-				<div className='hero-img'>
+				<div className='hero-img' data-aos='fade-left'>
 					<div className='hero-img-container'>
 						<Image
 							alt='hero'
@@ -45,11 +51,11 @@ export default function Home() {
 				</div>
 			</div>
 			<div className='what-long-section'>
-				<h1 className='what-long-head'>
+				<h1 className='what-long-head' data-aos='fade-down'>
 					What Makes A Password Secure?
 				</h1>
-				<div className='what-long-body'>
-					<div className='what-long-item first'>
+				<div className='what-long-body' >
+					<div className='what-long-item first' >
 						<FingerprintIcon className='what-long-icon' />
 						<h3>Unique</h3>
 						<p>
@@ -57,7 +63,7 @@ export default function Home() {
 							to reduce vulnerability in event of a hack.
 						</p>
 					</div>
-					<div className='what-long-item second'>
+					<div className='what-long-item second' >
 						<PasswordIcon className='what-long-icon' />
 						<h3>Long</h3>
 						<p>
