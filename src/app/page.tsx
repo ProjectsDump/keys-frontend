@@ -7,13 +7,13 @@ import PasswordIcon from '@mui/icons-material/Password';
 import VpnLockIcon from '@mui/icons-material/VpnLock';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import { useEffect } from 'react'
-import AOS from "aos";
+import Aos from "aos";
 import "aos/dist/aos.css";
 
 
 export default function Home() {
 	useEffect(() => {
-		AOS.init();
+		Aos.init();
 	}, []);
 	return (
 		<section className='landing-page'>
