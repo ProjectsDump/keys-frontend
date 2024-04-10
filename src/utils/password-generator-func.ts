@@ -49,5 +49,6 @@ export const passwordGeneratorFunc = (passLength: number, passParams: StrengthIn
         const CHILD_RANDOM_NUMBER = Math.floor(Math.random() * selectedParam.length)
         password.push(selectedParam[CHILD_RANDOM_NUMBER])
     }
+    
     return password.join('');
 }

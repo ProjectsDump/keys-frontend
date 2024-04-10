@@ -52,7 +52,7 @@ const Generator = () => {
 
 	return (
 		<div className='generate-body'>
-			<div className='strength-img-container' data-aos='fade-right'>
+			<div className='strength-img-container' >
 				<Image
 					src={'/assets/images/fortress.svg'}
 					alt='password strength'
@@ -61,7 +61,7 @@ const Generator = () => {
 					className='strength-img'
 				/>
 			</div>
-			<div className='generate-form-container' data-aos='fade-left'>
+			<div className='generate-form-container' >
 				<div className='generate-item first'>
 					<div className='first-container'>
 						<div className='input-container'>
