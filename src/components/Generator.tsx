@@ -5,9 +5,9 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import { Checkbox, FormControlLabel, Slider, Stack } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from 'react';
-import { passwordGeneratorFunc } from '@/utils/password-generator-func';
+import { useEffect, useState } from 'react';
 import {
+	checkPasswordStrength,
 	handleBtnClick,
 	handleCopy,
 	handleGenerate,
@@ -26,6 +26,8 @@ const passParamsInitialState = {
 const Generator = () => {
 	// Note we should be able to change this to a useRedecer because  this looks too rough buh that one nah later
 
+	// password gan gan
+	const [password, setPassword] = useState<string>('');
 	// password length state
 	const [passwordLength, setPasswordLength] = useState<number>(10);
 	// remove btn disabled status
@@ -40,11 +42,17 @@ const Generator = () => {
 	// password parameters --custom hook
 	const [passParams] = useFormControl(passParamsInitialState);
 
-	// password gan gan
-	const [password, setPassword] = useState<string>(
-		passwordGeneratorFunc(passwordLength, passParams.value)
-	);
 	const [copied, setCopied] = useState(false);
+
+	useEffect(() => {
+		handleGenerate(setPassword, passwordLength, passParams.value);
+		checkPasswordStrength(
+			passwordLength,
+			setPassStrength,
+			setRemoveDisabled,
+			setAddDisabled
+		);
+	}, [passwordLength, passParams.value]);
 
 	// min and max length of password
 	const MIN_LENGTH: number = 1;
@@ -52,7 +60,7 @@ const Generator = () => {
 
 	return (
 		<div className='generate-body'>
-			<div className='strength-img-container' >
+			<div className='strength-img-container'>
 				<Image
 					src={'/assets/images/fortress.svg'}
 					alt='password strength'
@@ -61,7 +69,7 @@ const Generator = () => {
 					className='strength-img'
 				/>
 			</div>
-			<div className='generate-form-container' >
+			<div className='generate-form-container'>
 				<div className='generate-item first'>
 					<div className='first-container'>
 						<div className='input-container'>
@@ -121,49 +129,25 @@ const Generator = () => {
 							control={<Checkbox className='checkbox' />}
 							className='label'
 							label={<span className='label'>ABC</span>}
-							onChange={() =>
-								passParams.onChange(
-									setPassword,
-									passwordLength,
-									'uppercase'
-								)
-							}
+							onChange={() => passParams.onChange('uppercase')}
 						/>
 						<FormControlLabel
 							checked={passParams.value.lowercase}
 							control={<Checkbox className='checkbox' />}
 							label={<span className='label'>abc</span>}
-							onChange={() =>
-								passParams.onChange(
-									setPassword,
-									passwordLength,
-									'lowercase'
-								)
-							}
+							onChange={() => passParams.onChange('lowercase')}
 						/>
 						<FormControlLabel
 							checked={passParams.value.integer}
 							control={<Checkbox className='checkbox' />}
 							label={<span className='label'>123</span>}
-							onChange={() =>
-								passParams.onChange(
-									setPassword,
-									passwordLength,
-									'integer'
-								)
-							}
+							onChange={() => passParams.onChange('integer')}
 						/>
 						<FormControlLabel
 							checked={passParams.value.special}
 							control={<Checkbox className='checkbox' />}
 							label={<span className='label'>#$&</span>}
-							onChange={() =>
-								passParams.onChange(
-									setPassword,
-									passwordLength,
-									'special'
-								)
-							}
+							onChange={() => passParams.onChange('special')}
 						/>
 					</div>
 				</div>
@@ -171,7 +155,7 @@ const Generator = () => {
 					<div className='generate-label'>
 						<span className='title-label'>Password Length:</span>
 						<span className='title-label-ans'>
-							{passwordLength + 1}
+							{passwordLength}
 						</span>
 					</div>
 					<div className='generate-params slider-container'>
@@ -185,16 +169,7 @@ const Generator = () => {
 								disabled={removeDisabled}
 								className='slider-icon-container'
 								onClick={() =>
-									handleBtnClick(
-										'remove',
-										setPasswordLength,
-										passwordLength,
-										setPassStrength,
-										setRemoveDisabled,
-										setAddDisabled,
-										setPassword,
-										passParams.value
-									)
+									handleBtnClick('remove', setPasswordLength)
 								}>
 								<RemoveIcon className='slider-icon' />
 							</button>
@@ -205,16 +180,7 @@ const Generator = () => {
 								valueLabelDisplay='auto'
 								value={passwordLength}
 								onChange={(e) =>
-									handleSlider(
-										e,
-										setPasswordLength,
-										passwordLength,
-										setPassStrength,
-										setRemoveDisabled,
-										setAddDisabled,
-										setPassword,
-										passParams.value
-									)
+									handleSlider(e, setPasswordLength)
 								}
 								min={MIN_LENGTH}
 								max={MAX_LENGTH}
@@ -226,16 +192,7 @@ const Generator = () => {
 								disabled={addDisabled}
 								className='slider-icon-container'
 								onClick={() =>
-									handleBtnClick(
-										'add',
-										setPasswordLength,
-										passwordLength,
-										setPassStrength,
-										setRemoveDisabled,
-										setAddDisabled,
-										setPassword,
-										passParams.value
-									)
+									handleBtnClick('add', setPasswordLength)
 								}>
 								<AddIcon className='slider-icon' />
 							</button>
