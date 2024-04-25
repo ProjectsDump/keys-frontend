@@ -1,0 +1,30 @@
+& .login-page {
+  width: 100%;
+  height: 100vh;
+  //   height: 100vh;
+  @include position(center, center, row);
+
+  & .login-image {
+    width: 65%;
+    height: 100%;
+    background-color: blue;
+
+    @include sm {
+      display: none;
+    }
+    & .login-jpg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  & .login-auth {
+    width: 35%;
+    height: 100%;
+
+    @include position(center, center, row);
+    @include sm {
+      width: 100%;
+    }
+  }
+}
