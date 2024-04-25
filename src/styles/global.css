@@ -405,11 +405,11 @@ a {
   flex-direction: column;
 }
 .app .authlogin .authlogin-container .authlogin-header {
-  width: 80%;
+  width: 90%;
   text-align: left;
   margin-bottom: 30px;
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 900;
   color: #7c2bac;
 }
 .app .authlogin .authlogin-container .authlogin-header .authlogin-logo {
@@ -440,7 +440,7 @@ a {
   outline: 0 !important;
   box-sizing: border-box;
   padding: 12px 15px;
-  width: 80%;
+  width: 90%;
 }
 .app .authlogin .authlogin-container .authlogin-form .authlogin-input:focus {
   border: 3px solid #7c2bac;
@@ -450,7 +450,7 @@ a {
   margin: 0;
   text-align: end;
   text-decoration-color: #7c2bac;
-  width: 80%;
+  width: 90%;
 }
 .app .authlogin .authlogin-container .authlogin-form .authlogin-page-link-label {
   cursor: pointer;
@@ -470,7 +470,7 @@ a {
 }
 .app .authlogin .authlogin-container .authlogin-form .authlogin-form-btn {
   padding: 10px 15px;
-  width: 80%;
+  width: 90%;
   border-radius: 6px;
   border: 0 !important;
   outline: 0 !important;
@@ -524,7 +524,7 @@ a {
   flex-direction: column;
 }
 .app .authlogin .authlogin-container .authlogin-buttons-container .authlogin-google-login-button {
-  width: 80%;
+  width: 90%;
   border-radius: 6px;
   box-sizing: border-box;
   padding: 10px 15px;
