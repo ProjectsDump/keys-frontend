@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Register = () => {
   return (
-    <section className="register-page">
+    <div className="register-page">
       <div className="register">
         <div className="register-image">
           <Image
@@ -19,7 +19,7 @@ const Register = () => {
           <Auth />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
