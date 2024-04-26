@@ -2,6 +2,7 @@
   width: 100%;
   height: 10vh;
 }
+
 & section.navbar {
   @include position(center, space-between);
   position: fixed;
@@ -29,6 +30,7 @@
     padding: 10px;
     height: 40px;
     width: 150px;
+
     & .logo-img {
       width: 100%;
       height: 100%;
@@ -38,31 +40,46 @@
   & .toggle-menu-icon {
     position: relative;
     display: none;
+
     @include sm {
       display: block;
     }
   }
 
   & nav {
-    & > * {
+    &>* {
       margin: 0 10px;
     }
 
     & span {
       @include hover-animation($primary);
     }
-    & .signup-btn {
+
+    & .profile-btn {
       border: 1px solid $secondary;
       color: $secondary;
+
       &:hover {
         background-color: $secondary;
         color: white;
       }
     }
+
+    & .signup-btn {
+      border: 1px solid $secondary;
+      color: $secondary;
+
+      &:hover {
+        background-color: $secondary;
+        color: white;
+      }
+    }
+
     & .login-btn {
       border: 1px solid transparent;
       background: $primary;
       color: white;
+
       &:hover {
         background-color: white;
         color: $primary;
@@ -75,6 +92,7 @@
         display: none;
       }
     }
+
     &.mobile-nav {
       width: 70vw;
       height: 40vh;
@@ -90,10 +108,12 @@
       @include sm {
         display: block;
       }
+
       @include xsm {
         width: 80vw;
       }
-      & > * {
+
+      &>* {
         margin: 10px 0;
       }
     }

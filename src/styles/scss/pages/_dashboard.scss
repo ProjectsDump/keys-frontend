@@ -1,0 +1,22 @@
+& .dashboard-layout {
+    width: 100%;
+    display: flex;
+
+    & .content {
+        width: 70%;
+
+        & .dashboard {
+            width: 100%;
+            padding: 20px 10px;
+
+            & h1{
+                font-size: 30px;
+            }
+            & p{
+                font-size: 20px;
+                color: $light_secondary;
+            }
+        }
+    }
+
+}

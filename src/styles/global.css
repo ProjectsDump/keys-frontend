@@ -172,6 +172,14 @@ a {
 .app section.navbar nav span:hover::after {
   width: 100%;
 }
+.app section.navbar nav .profile-btn {
+  border: 1px solid rgb(255, 103, 47);
+  color: rgb(255, 103, 47);
+}
+.app section.navbar nav .profile-btn:hover {
+  background-color: rgb(255, 103, 47);
+  color: white;
+}
 .app section.navbar nav .signup-btn {
   border: 1px solid rgb(255, 103, 47);
   color: rgb(255, 103, 47);
@@ -767,6 +775,17 @@ a {
     width: 100%;
   }
 }
+.app .sidebar-container {
+  min-width: 20%;
+  width: auto;
+}
+.app .sidebar-container .sidebar {
+  min-width: inherit;
+  width: inherit;
+  height: 100%;
+  position: fixed;
+  background-color: red;
+}
 .app .landing-page {
   display: flex;
   align-items: center;
@@ -1047,4 +1066,22 @@ a {
     font-size: 15px;
     font-weight: lighter;
   }
+}
+.app .dashboard-layout {
+  width: 100%;
+  display: flex;
+}
+.app .dashboard-layout .content {
+  width: 70%;
+}
+.app .dashboard-layout .content .dashboard {
+  width: 100%;
+  padding: 20px 10px;
+}
+.app .dashboard-layout .content .dashboard h1 {
+  font-size: 30px;
+}
+.app .dashboard-layout .content .dashboard p {
+  font-size: 20px;
+  color: rgb(255, 132, 87);
 }/*# sourceMappingURL=global.css.map */

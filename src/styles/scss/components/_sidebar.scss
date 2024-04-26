@@ -1,0 +1,12 @@
+& .sidebar-container {
+    min-width: 20%;
+    width: auto;
+
+    & .sidebar {
+        min-width: inherit;
+        width: inherit;
+        height: 100%;
+        position: fixed;
+        background-color: red;
+    }
+}
