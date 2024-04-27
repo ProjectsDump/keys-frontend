@@ -1,6 +1,5 @@
 "use client";
 
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
 import Link from "next/link";
 import PasswordIcon from "@mui/icons-material/Password";

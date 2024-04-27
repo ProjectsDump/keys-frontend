@@ -1,12 +1,67 @@
 & .sidebar-container {
     min-width: 20%;
     width: auto;
+    transition: .1s ease-in-out;
+    &.closed {
+        min-width: 100px;
+        width: 100px;
+
+        & .sidebar {
+            & .blur-bg {
+                width: auto;
+            }
+        }
+    }
 
     & .sidebar {
         min-width: inherit;
         width: inherit;
         height: 100%;
         position: fixed;
-        background-color: red;
+        padding: 20px 10px;
+        box-shadow: 10px 1px 96px -36px $light_primary_o ;
+        @include position(center, flex-start, column);
+        gap: 20px;
+        background-color: rgba(255, 255, 255, 0.655);
+        z-index: 10;
+
+
+
+        & .blur-bg {
+            width: 80%;
+            box-shadow: $shadow-bottom;
+            background-color: rgba(255, 255, 255, 0.589);
+            backdrop-filter: saturate(180%) blur(10px);
+            border-radius: 15px;
+            padding: 15px;
+            @include position;
+            gap: 15px;
+            cursor: pointer;
+
+            &:hover {
+                transform: translateY(4px) scale(1.02);
+            }
+
+            @include click_animation;
+
+            &.active {
+                // background-color: $light_primary_o;
+                @include bg-gradient($light_primary_o, $light_secondary_o)
+            }
+
+            & .Link {
+                width: 100%;
+                height: 100%;
+                @include position;
+                gap: 15px;
+            }
+
+            & span {
+                font-weight: bold;
+                font-size: large;
+            }
+
+
+        }
     }
 }

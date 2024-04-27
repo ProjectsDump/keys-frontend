@@ -16,3 +16,9 @@ export interface UserContextInterface {
 	user: null | UserInterface;
 	setUser: React.Dispatch<React.SetStateAction<UserInterface | null>>;
 }
+
+export interface PasswordInterface {
+	label: string;
+	username: string;
+	password: string;
+}

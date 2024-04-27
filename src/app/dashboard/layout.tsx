@@ -8,9 +8,7 @@ export default function DashboardLayout({
 }) {
 	return (
 		<section className='dashboard-layout'>
-			<div className='sidebar-container'>
 				<Sidebar />
-			</div>
 			<section className='content'>{children}</section>
 		</section>
 	);

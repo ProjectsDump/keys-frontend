@@ -1,6 +1,6 @@
 import Generator from '@/components/Generator';
 
-const GeneratePassword = () => {
+export default function GeneratePassword() {
 	return (
 		<div className='generate-password-page'>
 			<div className='generate-head'>
@@ -13,6 +13,4 @@ const GeneratePassword = () => {
 			<Generator />
 		</div>
 	);
-};
-
-export default GeneratePassword;
+}
