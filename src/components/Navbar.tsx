@@ -37,7 +37,7 @@ const Navbar = () => {
 						Generate Secure Password
 					</span>
 				</Link>
-				{isLoggedIn ? (
+				{isLoggedIn() ? (
 					<Link className='Link' href={'/dashboard'}>
 						<button className='btn profile-btn'>Profile</button>
 					</Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
 
 			{/* mobile nav */}
 			<div className='toggle-menu-icon'>
-				{isLoggedIn ? (
+				{isLoggedIn() ? (
 					<Link className='Link' href={'/dashboard'}>
 						<div className='acct-con'>
 							<Person /> <span>Profile</span>
