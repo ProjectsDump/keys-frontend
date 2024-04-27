@@ -151,6 +151,42 @@ a {
     display: block;
   }
 }
+.app section.navbar .toggle-menu-icon .blur-bg {
+  box-shadow: 0px 13px 12px -5px rgba(0, 0, 0, 0.103);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+          backdrop-filter: saturate(180%) blur(10px);
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background: rgba(2, 0, 36, 0.788);
+  background: linear-gradient(94deg, rgba(178, 146, 196, 0.6039215686) 12%, rgba(255, 132, 87, 0.566) 100%);
+  gap: 15px;
+  cursor: pointer;
+}
+.app section.navbar .acct-con {
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  box-shadow: 1px 1px 2px 2px rgba(211, 211, 211, 0.307);
+  background: rgba(2, 0, 36, 0.788);
+  background: linear-gradient(94deg, rgba(255, 132, 87, 0.566) 12%, rgba(178, 146, 196, 0.6039215686) 100%);
+}
+.app section.navbar .acct-con:active {
+  transform: scale(90%);
+  transition: 0.2s;
+}
+@media (max-width: 700px) {
+  .app section.navbar .acct-con span {
+    display: none;
+  }
+}
 .app section.navbar nav > * {
   margin: 0 10px;
 }
@@ -172,19 +208,11 @@ a {
 .app section.navbar nav span:hover::after {
   width: 100%;
 }
-.app section.navbar nav .profile-btn {
+.app section.navbar nav .signup-btn, .app section.navbar nav .profile-btn {
   border: 1px solid rgb(255, 103, 47);
   color: rgb(255, 103, 47);
 }
-.app section.navbar nav .profile-btn:hover {
-  background-color: rgb(255, 103, 47);
-  color: white;
-}
-.app section.navbar nav .signup-btn {
-  border: 1px solid rgb(255, 103, 47);
-  color: rgb(255, 103, 47);
-}
-.app section.navbar nav .signup-btn:hover {
+.app section.navbar nav .signup-btn:hover, .app section.navbar nav .profile-btn:hover {
   background-color: rgb(255, 103, 47);
   color: white;
 }
@@ -780,16 +808,18 @@ a {
   width: auto;
   transition: 0.1s ease-in-out;
 }
+@media (max-width: 700px) {
+  .app .sidebar-container {
+    display: none;
+  }
+}
 .app .sidebar-container.closed {
   min-width: 100px;
   width: 100px;
 }
-.app .sidebar-container.closed .sidebar .blur-bg {
+.app .sidebar {
+  min-width: 20%;
   width: auto;
-}
-.app .sidebar-container .sidebar {
-  min-width: inherit;
-  width: inherit;
   height: 100%;
   position: fixed;
   padding: 20px 10px;
@@ -802,7 +832,12 @@ a {
   background-color: rgba(255, 255, 255, 0.655);
   z-index: 10;
 }
-.app .sidebar-container .sidebar .blur-bg {
+@media (max-width: 700px) {
+  .app .sidebar {
+    width: 80vw;
+  }
+}
+.app .sidebar .blur-bg {
   width: 80%;
   box-shadow: 0px 13px 12px -5px rgba(0, 0, 0, 0.103);
   background-color: rgba(255, 255, 255, 0.589);
@@ -817,18 +852,38 @@ a {
   gap: 15px;
   cursor: pointer;
 }
-.app .sidebar-container .sidebar .blur-bg:hover {
-  transform: translateY(4px) scale(1.02);
-}
-.app .sidebar-container .sidebar .blur-bg:active {
+.app .sidebar .blur-bg:active {
   transform: scale(90%);
   transition: 0.2s;
 }
-.app .sidebar-container .sidebar .blur-bg.active {
+.app .sidebar .blur-bg:hover {
+  transform: translateY(4px) scale(1.02);
+}
+.app .sidebar .blur-bg.menu {
   background: rgba(2, 0, 36, 0.788);
   background: linear-gradient(94deg, rgba(178, 146, 196, 0.6039215686) 12%, rgba(255, 132, 87, 0.566) 100%);
 }
-.app .sidebar-container .sidebar .blur-bg .Link {
+.app .sidebar .blur-bg.desktop {
+  display: flex;
+}
+@media (max-width: 700px) {
+  .app .sidebar .blur-bg.desktop {
+    display: none;
+  }
+}
+.app .sidebar .blur-bg.mobile {
+  display: none;
+}
+@media (max-width: 700px) {
+  .app .sidebar .blur-bg.mobile {
+    width: auto;
+    display: flex;
+    position: fixed;
+    top: 1;
+    left: 105%;
+  }
+}
+.app .sidebar .blur-bg .Link {
   width: 100%;
   height: 100%;
   display: flex;
@@ -837,9 +892,26 @@ a {
   flex-direction: row;
   gap: 15px;
 }
-.app .sidebar-container .sidebar .blur-bg span {
+.app .sidebar .blur-bg span {
   font-weight: bold;
   font-size: large;
+}
+.app .sidebar.closed {
+  min-width: 100px;
+  width: 100px;
+}
+@media (max-width: 700px) {
+  .app .sidebar.closed {
+    transform: translateX(-100%);
+  }
+}
+.app .sidebar.closed .blur-bg {
+  width: auto;
+}
+@media (max-width: 700px) {
+  .app .sidebar.open {
+    transform: translateX(0);
+  }
 }
 .app .single-password-list {
   width: 80%;
@@ -853,8 +925,27 @@ a {
   align-items: center;
   gap: 20px;
 }
-.app .single-password-list .label {
-  width: 20%;
+@media (max-width: 700px) {
+  .app .single-password-list {
+    width: 95%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.app .single-password-list .first-con {
+  width: 30%;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 700px) {
+  .app .single-password-list .first-con {
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+.app .single-password-list .first-con .label {
+  width: 80%;
   font-weight: bold;
   font-size: large;
   overflow: hidden;
@@ -867,6 +958,11 @@ a {
   flex-direction: row;
   gap: 10px;
   overflow: hidden;
+}
+@media (max-width: 700px) {
+  .app .single-password-list .password {
+    width: 100%;
+  }
 }
 .app .single-password-list .password .eyeIcon {
   color: #7c2bac;
@@ -951,10 +1047,6 @@ a {
   -webkit-text-fill-color: transparent;
   color: #7c2bac;
   border: 1px solid #7c2bac;
-}
-.app .landing-page .hero .hero-text .hero-text-container .hero-btn:hover .arrow-icon {
-  transform: rotate(360deg);
-  transition: transform 1s ease-out;
 }
 .app .landing-page .hero .hero-text .hero-text-container .hero-btn:active .arrow-icon {
   transform: translateX(100px);
@@ -1172,6 +1264,11 @@ a {
 .app .dashboard-layout .content {
   flex: 1;
 }
+@media (max-width: 700px) {
+  .app .dashboard-layout .content {
+    width: 100%;
+  }
+}
 .app .dashboard-layout .content .dashboard {
   width: 100%;
   padding: 20px 10px;
@@ -1179,6 +1276,11 @@ a {
 .app .dashboard-layout .content .dashboard h1 {
   font-size: 30px;
   margin: 10px 0;
+}
+@media (max-width: 700px) {
+  .app .dashboard-layout .content .dashboard h1 {
+    text-align: center;
+  }
 }
 .app .dashboard-layout .content .dashboard p {
   font-size: 20px;
@@ -1206,6 +1308,11 @@ a {
   justify-content: flex-start;
   flex-direction: row;
   gap: 10px;
+}
+@media (max-width: 700px) {
+  .app .dashboard-layout .content .dashboard .search-container .search-main-container {
+    width: 95%;
+  }
 }
 .app .dashboard-layout .content .dashboard .search-container .search-main-container .search-input {
   height: 40px;

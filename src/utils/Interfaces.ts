@@ -15,6 +15,7 @@ export interface UserInterface {
 export interface UserContextInterface {
 	user: null | UserInterface;
 	setUser: React.Dispatch<React.SetStateAction<UserInterface | null>>;
+	isLoggedIn: boolean;
 }
 
 export interface PasswordInterface {

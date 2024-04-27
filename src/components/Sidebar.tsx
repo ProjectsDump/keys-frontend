@@ -1,6 +1,6 @@
 'use client';
 
-import { Menu, Password, Person } from '@mui/icons-material';
+import { Close, Menu, Password, Person } from '@mui/icons-material';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -21,17 +21,30 @@ const sideBarLinks = [
 
 const Sidebar = () => {
 	const [openMenu, setOpenMenu] = useState<boolean>(true);
-
+	const handleToggle = () => {
+		setOpenMenu((prev) => !prev);
+		console.log(openMenu);
+	};
 	return (
-		<div className={`sidebar-container ${openMenu ? '' : 'closed'}`}>
-			<section className={`sidebar`}>
+		<>
+			<div
+				className={`sidebar-container ${
+					openMenu ? '' : 'closed'
+				}`}></div>
+			<section className={`sidebar ${openMenu ? 'open' : 'closed'}`}>
 				<div
-					className='blur-bg active'
-					onClick={() => setOpenMenu((prev) => !prev)}>
+					className='blur-bg desktop menu'
+					onClick={() => handleToggle()}>
 					<Menu />{' '}
 					<span style={{ display: openMenu ? 'inline' : 'none' }}>
 						Menu
 					</span>
+				</div>
+
+				<div
+					className='blur-bg mobile menu'
+					onClick={() => handleToggle()}>
+					{openMenu ? <Close /> : <Menu />}{' '}
 				</div>
 				{sideBarLinks.map((link, index) => {
 					return (
@@ -52,7 +65,7 @@ const Sidebar = () => {
 					);
 				})}
 			</section>
-		</div>
+		</>
 	);
 };
 

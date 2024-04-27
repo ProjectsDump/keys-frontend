@@ -44,6 +44,33 @@
     @include sm {
       display: block;
     }
+
+    & .blur-bg {
+      box-shadow: $shadow-bottom;
+      backdrop-filter: saturate(180%) blur(10px);
+      border-radius: 15px;
+      padding: 15px;
+      @include position;
+      @include bg-gradient($light_primary_o, $light_secondary_o);
+      gap: 15px;
+      cursor: pointer;
+    }
+  }
+
+  & .acct-con {
+    padding: 15px;
+    border-radius: 15px;
+    @include position;
+    gap: 10px;
+    box-shadow: $shadow-sm;
+    @include bg-gradient($light_secondary_o, $light_primary_o);
+    @include click_animation;
+
+    & span {
+      @include sm {
+        display: none;
+      }
+    }
   }
 
   & nav {
@@ -55,17 +82,8 @@
       @include hover-animation($primary);
     }
 
+    & .signup-btn,
     & .profile-btn {
-      border: 1px solid $secondary;
-      color: $secondary;
-
-      &:hover {
-        background-color: $secondary;
-        color: white;
-      }
-    }
-
-    & .signup-btn {
       border: 1px solid $secondary;
       color: $secondary;
 

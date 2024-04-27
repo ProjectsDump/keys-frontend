@@ -4,6 +4,9 @@
 
     & .content {
         flex: 1;
+        @include sm{
+            width: 100%;
+        }
 
         & .dashboard {
             width: 100%;
@@ -12,6 +15,10 @@
             & h1 {
                 font-size: 30px;
                 margin: 10px 0;
+
+                @include sm{
+                    text-align: center;
+                }
             }
 
             & p {
@@ -34,6 +41,10 @@
                     box-shadow: $shadow-bottom;
                     @include position(center, flex-start);
                     gap: 10px;
+
+                    @include sm{
+                        width: 95%;
+                    }
 
                     & .search-input{
                         height: 40px;

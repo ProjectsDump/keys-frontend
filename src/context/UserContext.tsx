@@ -13,8 +13,10 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 		username: 'glory',
 		email: 'glory@gmail.com',
 	});
+
+	const isLoggedIn = () => !!user;
 	return (
-		<UserContext.Provider value={{ user, setUser }}>
+		<UserContext.Provider value={{ user, setUser, isLoggedIn }}>
 			{children}
 		</UserContext.Provider>
 	);

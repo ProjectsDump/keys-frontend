@@ -30,10 +30,13 @@ const SinglePasswordList = ({ password }: { password: PasswordInterface }) => {
 
 	return (
 		<div className='single-password-list'>
-			<div className='icon'>
-				<KeyIcon />
+			<div className='first-con'>
+				<div className='icon'>
+					<KeyIcon />
+				</div>
+				<div className='label'>{summarize(password.label)}</div>
 			</div>
-			<div className='label'>{summarize(password.label)}</div>
+
 			<div className='label'>{summarize(password.username)}</div>
 			<div className='password'>
 				<span>
