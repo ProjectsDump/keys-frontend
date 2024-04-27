@@ -44,11 +44,6 @@
             @include text-gradient($secondary, $primary);
             color: $primary;
             border: 1px solid $primary;
-
-            & .arrow-icon {
-              transform: rotate(360deg);
-              transition: transform 1s ease-out;
-            }
           }
           &:active {
             & .arrow-icon {

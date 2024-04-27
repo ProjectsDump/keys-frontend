@@ -3,8 +3,10 @@ $shadow: 0px 3px 10px 6px rgba(0, 0, 0, 0.1);
 $shadow-sm: 1px 1px 2px 2px rgba(211, 211, 211, 0.307);
 $primary: #7c2bac;
 $light_primary: #b292c4;
+$light_primary_o: #b292c49a;
 $secondary: rgb(255, 103, 47);
 $light_secondary: rgb(255, 132, 87);
+$light_secondary_o: rgba(255, 132, 87, 0.566);
 $text: #0b070d;
 $light_text: #bebebe;
 $bg: #ffffff;
@@ -33,6 +35,7 @@ $bg: #ffffff;
 	padding: 5px;
 	font-weight: bold;
 	cursor: pointer;
+
 	&::after {
 		position: absolute;
 		left: 0;
@@ -42,8 +45,16 @@ $bg: #ffffff;
 		height: 2px;
 		background-color: $line-color;
 	}
+
 	&:hover::after {
 		width: 100%;
+	}
+}
+
+@mixin click_animation {
+	&:active {
+		transform: scale(90%);
+		transition: 0.2s;
 	}
 }
 
@@ -60,21 +71,25 @@ $breakpoints: (
 		@content;
 	}
 }
+
 @mixin sm {
 	@media (max-width: map-get($breakpoints, 'sm')) {
 		@content;
 	}
 }
+
 @mixin md {
 	@media (max-width: map-get($breakpoints, 'md')) {
 		@content;
 	}
 }
+
 @mixin lg {
 	@media (max-width: map-get($breakpoints, 'lg')) {
 		@content;
 	}
 }
+
 @mixin xl {
 	@media (max-width: map-get($breakpoints, 'xl')) {
 		@content;

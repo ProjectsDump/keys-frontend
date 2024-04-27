@@ -20,13 +20,16 @@ html {
 body {
   margin: 0;
 }
+
 .Link {
   color: inherit;
   text-decoration: none;
 }
+
 a {
   text-decoration: none;
 }
+
 .btn {
   border: 0;
   border-radius: 4px;
@@ -34,11 +37,13 @@ a {
   background-color: transparent;
   font-weight: 500;
   cursor: pointer;
+
   &:active {
     transform: scale(90%);
     transition: 0.2s;
   }
 }
+
 .click_animation {
   &:active {
     transform: scale(90%);
@@ -60,11 +65,9 @@ a {
     z-index: 3;
     width: 100%;
     max-width: 640px;
-    background-image: radial-gradient(
-        at 27% 37%,
+    background-image: radial-gradient(at 27% 37%,
         rgb(17, 0, 255) 0px,
-        transparent 0%
-      ),
+        transparent 0%),
       radial-gradient(at 97% 21%, $primary 0px, transparent 50%),
       radial-gradient(at 52% 99%, $secondary 0px, transparent 50%),
       radial-gradient(at 10% 29%, $light_primary 0px, transparent 50%),
@@ -115,10 +118,13 @@ a {
   @import "./scss/components/auth";
   @import "./scss/components/authlogin";
   @import "./scss/components/generator";
+  @import "./scss/components/sidebar";
+  @import "./scss/components/singlePasswordList";
 
   // pages
   @import "./scss/pages/home";
   @import "./scss/pages/register";
   @import "./scss/pages/login";
   @import "./scss/pages/generate-password";
+  @import "./scss/pages/dashboard";
 }

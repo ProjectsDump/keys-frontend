@@ -1,0 +1,105 @@
+& .sidebar-container {
+    min-width: 20%;
+    width: auto;
+    transition: .1s ease-in-out;
+
+    @include sm {
+        display: none;
+    }
+
+    &.closed {
+        min-width: 100px;
+        width: 100px;
+    }
+}
+
+& .sidebar {
+    min-width: 20%;
+    width: auto;
+    height: 100%;
+    position: fixed;
+    padding: 20px 10px;
+    box-shadow: 10px 1px 96px -36px $light_primary_o ;
+    @include position(center, flex-start, column);
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.655);
+    z-index: 10;
+
+    @include sm {
+        width: 80vw;
+    }
+
+
+    & .blur-bg {
+        width: 80%;
+        box-shadow: $shadow-bottom;
+        background-color: rgba(255, 255, 255, 0.589);
+        backdrop-filter: saturate(180%) blur(10px);
+        border-radius: 15px;
+        padding: 15px;
+        @include position;
+        gap: 15px;
+        cursor: pointer;
+        @include click_animation;
+
+        &:hover {
+            transform: translateY(4px) scale(1.02);
+        }
+
+        &.menu {
+            @include bg-gradient($light_primary_o, $light_secondary_o)
+        }
+
+        &.desktop {
+            display: flex;
+
+            @include sm {
+                display: none;
+            }
+        }
+
+        &.mobile {
+            display: none;
+
+            @include sm {
+                width: auto;
+                display: flex;
+                position: fixed;
+                top: 1;
+                left: 105%;
+            }
+        }
+
+
+        & .Link {
+            width: 100%;
+            height: 100%;
+            @include position;
+            gap: 15px;
+        }
+
+        & span {
+            font-weight: bold;
+            font-size: large;
+        }
+    }
+
+    &.closed {
+        min-width: 100px;
+        width: 100px;
+
+        @include sm{
+            transform: translateX(-100%);
+        }
+
+        & .blur-bg {
+            width: auto;
+        }
+    }
+
+    &.open{
+        @include sm{
+            transform: translateX(0);
+        }
+    }
+}
