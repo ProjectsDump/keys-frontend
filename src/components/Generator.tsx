@@ -15,6 +15,7 @@ import {
 	strengthTag,
 } from '@/utils/helperFunc';
 import { useFormControl } from '@/utils/customHooks';
+import SaveModal from './SaveModal';
 
 const passParamsInitialState = {
 	uppercase: true,
@@ -44,6 +45,9 @@ const Generator = () => {
 
 	const [copied, setCopied] = useState(false);
 
+	// modal state
+	const [openSaveModal, setOpenSaveModal] = useState(false)
+
 	useEffect(() => {
 		handleGenerate(setPassword, passwordLength, passParams.value);
 		checkPasswordStrength(
@@ -59,6 +63,8 @@ const Generator = () => {
 	const MAX_LENGTH: number = 50;
 
 	return (
+		<>
+		<SaveModal open={openSaveModal} setOpen={setOpenSaveModal} />
 		<div className='generate-body'>
 			<div className='strength-img-container'>
 				<Image
@@ -116,7 +122,7 @@ const Generator = () => {
 								/>
 							</div>
 						</div>
-						<button className='btn save-btn'>Save</button>
+						<button onClick={()=>setOpenSaveModal(true)} className='btn save-btn'>Save</button>
 					</div>
 				</div>
 				<div className='generate-item second'>
@@ -201,6 +207,7 @@ const Generator = () => {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 };
 

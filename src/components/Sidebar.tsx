@@ -14,7 +14,7 @@ const sideBarLinks = [
 	{
 		title: 'Account',
 		description: 'Manage User account',
-		link: '/account',
+		link: '/dashboard/profile',
 		icon: <Person />,
 	},
 ];
