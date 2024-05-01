@@ -70,7 +70,11 @@ const Generator = () => {
 
 	return (
 		<>
-			<SaveModal open={openSaveModal} setOpen={setOpenSaveModal} />
+			<SaveModal
+				open={openSaveModal}
+				setOpen={setOpenSaveModal}
+				password={password}
+			/>
 			<div className='generate-body'>
 				<div className='strength-img-container'>
 					<Image

@@ -1,3 +1,4 @@
+import { PasswordInterface } from '@/utils/Interfaces';
 import {
 	Button,
 	Dialog,
@@ -5,20 +6,34 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle,
-    TextField,
+	TextField,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 
 const SaveModal = ({
 	open,
 	setOpen,
+	password,
 }: {
 	open: boolean;
 	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	password: string;
 }) => {
+	const [label, setLabel] = useState<string>('');
+	const [username, setUsername] = useState<string>('');
+	const [description, setDescription] = useState<string>('');
+
 	const handleClose = () => {
 		setOpen(false);
 	};
+
+	const hanbleChange = (
+		e: any,
+		setState: React.Dispatch<React.SetStateAction<string>>
+	) => {
+		setState(e.target.value);
+	};
+
 	return (
 		<Dialog
 			open={open}
@@ -30,10 +45,12 @@ const SaveModal = ({
 				},
 				onSubmit: (event: any) => {
 					event.preventDefault();
-					// const formData = new FormData(event.currentTarget);
-					// const formJson = Object.fromEntries(formData.entries());
-					// const email = formJson.email;
-					// console.log(email);
+					const body: PasswordInterface = {
+						label,
+						username,
+						password,
+						description,
+					};
 					handleClose();
 				},
 			}}>
@@ -45,6 +62,7 @@ const SaveModal = ({
 				</DialogContentText>
 				<TextField
 					required
+					disabled
 					margin='dense'
 					id='password'
 					name='password'
@@ -52,6 +70,7 @@ const SaveModal = ({
 					type='text'
 					fullWidth
 					variant='standard'
+					value={password}
 				/>
 				<TextField
 					autoFocus
@@ -63,6 +82,21 @@ const SaveModal = ({
 					type='text'
 					fullWidth
 					variant='standard'
+					onChange={(e) => hanbleChange(e, setLabel)}
+					value={label}
+				/>
+				<TextField
+					autoFocus
+					required
+					margin='dense'
+					id='username'
+					name='username'
+					label='Password username'
+					type='text'
+					fullWidth
+					variant='standard'
+					onChange={(e) => hanbleChange(e, setUsername)}
+					value={username}
 				/>
 				<TextField
 					margin='dense'
@@ -72,12 +106,16 @@ const SaveModal = ({
 					type='text'
 					fullWidth
 					variant='standard'
-                    rows={3}
-                    maxRows={4}
+					rows={3}
+					maxRows={4}
+					onChange={(e) => hanbleChange(e, setDescription)}
+					value={description}
 				/>
 			</DialogContent>
 			<DialogActions>
-				<Button onClick={handleClose} color='error'>Cancel</Button>
+				<Button onClick={handleClose} color='error'>
+					Cancel
+				</Button>
 				<Button type='submit'>Save</Button>
 			</DialogActions>
 		</Dialog>
