@@ -44,6 +44,16 @@ const SaveModal = ({
 					can find it later on your profile.
 				</DialogContentText>
 				<TextField
+					required
+					margin='dense'
+					id='password'
+					name='password'
+					label='Password'
+					type='text'
+					fullWidth
+					variant='standard'
+				/>
+				<TextField
 					autoFocus
 					required
 					margin='dense'
@@ -55,7 +65,6 @@ const SaveModal = ({
 					variant='standard'
 				/>
 				<TextField
-					required
 					margin='dense'
 					id='description'
 					name='description'
@@ -68,8 +77,8 @@ const SaveModal = ({
 				/>
 			</DialogContent>
 			<DialogActions>
-				<Button onClick={handleClose}>Cancel</Button>
-				<Button type='submit'>Subscribe</Button>
+				<Button onClick={handleClose} color='error'>Cancel</Button>
+				<Button type='submit'>Save</Button>
 			</DialogActions>
 		</Dialog>
 	);
