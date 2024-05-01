@@ -8,11 +8,13 @@ export const UserContext = createContext<UserContextInterface>(
 	{} as UserContextInterface
 );
 
+const initialTestUser = {
+	username: 'glory',
+	email: 'glory@gmail.com',
+}
+
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
-	const [user, setUser] = useState<null | UserInterface>({
-		username: 'glory',
-		email: 'glory@gmail.com',
-	});
+	const [user, setUser] = useState<null | UserInterface>(initialTestUser);
 
 	const isLoggedIn = () => !!user;
 	return (
