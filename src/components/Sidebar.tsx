@@ -20,7 +20,7 @@ const sideBarLinks = [
 ];
 
 const Sidebar = () => {
-	const [openMenu, setOpenMenu] = useState<boolean>(true);
+	const [openMenu, setOpenMenu] = useState<boolean>(false);
 	const handleToggle = () => {
 		setOpenMenu((prev) => !prev);
 		console.log(openMenu);
