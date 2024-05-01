@@ -14,13 +14,13 @@ const sideBarLinks = [
 	{
 		title: 'Account',
 		description: 'Manage User account',
-		link: '/account',
+		link: '/dashboard/profile',
 		icon: <Person />,
 	},
 ];
 
 const Sidebar = () => {
-	const [openMenu, setOpenMenu] = useState<boolean>(true);
+	const [openMenu, setOpenMenu] = useState<boolean>(false);
 	const handleToggle = () => {
 		setOpenMenu((prev) => !prev);
 		console.log(openMenu);
