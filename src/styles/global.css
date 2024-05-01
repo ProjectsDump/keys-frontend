@@ -17,8 +17,7 @@ body {
 }
 
 .Link {
-  color: inherit;
-  text-decoration: none;
+  all: unset;
 }
 
 a {

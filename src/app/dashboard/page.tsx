@@ -6,21 +6,25 @@ const passwords = [
 		label: 'Gmail',
 		username: 'john.doe@gmail.com',
 		password: 'mypassworjndssdoisdnsdosmdllx,czl,xclz,xlz,lxlksnnd',
+		description: ""
 	},
 	{
 		label: 'Microsoft',
 		username: 'john.doe@gmail.com',
 		password: 'mypassword',
+		description: ""
 	},
 	{
 		label: 'My Phone',
 		username: 'john.doe@gmail.com',
 		password: '123456',
+		description: ""
 	},
 	{
 		label: 'instagram',
 		username: 'Glory135',
 		password: 'instamypassword',
+		description: ""
 	},
 ];
 export default function Dashboard() {

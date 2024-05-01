@@ -1,0 +1,13 @@
+services:
+    lock-box-mongo:
+        image: mongo:latest
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: lock-box-admin
+            MONGO_INITDB_ROOT_PASSWORD: lockpass
+        ports:
+            - 27017:27017
+        volumes:
+            - lock-box-mongo-data:/data/db
+volumes:
+    lock-box-mongo-data:
+        driver: local

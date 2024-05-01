@@ -6,13 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:dev:rm": "docker compose rm lock-box-mongo -s -f -v",
+    "db:dev:up": "docker compose up lock-box-mongo -d",
+    "db:dev:restart": "npm run db:dev:rm && npm run db:dev:up && sleep 1 && npm run prisma:dev:deploy"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.6",
+    "@next/env": "^14.2.3",
     "@tanstack/react-query": "^4.29.15",
     "@types/node": "20.3.1",
     "@types/react": "18.2.13",
@@ -23,7 +27,7 @@
     "eslint": "8.43.0",
     "eslint-config-next": "^14.2.3",
     "mongodb": "^5.6.0",
-    "mongoose": "^7.3.1",
+    "mongoose": "^7.6.11",
     "next": "^14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
