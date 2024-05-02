@@ -2,6 +2,7 @@
 
 import { Close, Menu, Password, Person } from '@mui/icons-material';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const sideBarLinks = [
@@ -21,9 +22,12 @@ const sideBarLinks = [
 
 const Sidebar = () => {
 	const [openMenu, setOpenMenu] = useState<boolean>(false);
+
+	const pathname = usePathname(); // Assumed to return the current route/path
+
+
 	const handleToggle = () => {
 		setOpenMenu((prev) => !prev);
-		console.log(openMenu);
 	};
 	return (
 		<>
@@ -50,7 +54,7 @@ const Sidebar = () => {
 					return (
 						<div
 							key={index}
-							className='blur-bg'
+							className={`blur-bg ${pathname === link.link && "active-link"}`} 
 							title={link.description}>
 							<Link className='Link' href={link.link}>
 								{link.icon}{' '}
