@@ -4,24 +4,23 @@ import { getJwtSecretKey } from '@/lib/auth';
 import { UserLoginInterface } from '@/utils/Interfaces';
 import { SignJWT } from 'jose';
 import { nanoid } from 'nanoid';
-import { NextResponse } from 'next/server';
 import cookie from 'cookie';
-import { NextApiResponse } from 'next';
 import { connectDB } from '@/backend/mongodb';
 
 // login user
-export const POST = async (req: Request, res: NextApiResponse) => {
+export const POST = async (req: Request) => {
 	const { email, password }: UserLoginInterface = await req.json();
 
 	// /connect to DB
-	await connectDB()
-	
-	const user = await User.findOne({ email });
+	await connectDB();
 
+	// check if email already exists
+	const user = await User.findOne({ email });
 	if (!user) {
 		throw new Error('User not found');
 	}
 
+	// check if password already exists
 	const passwordCorrect = await comparePass(password, user.password);
 	if (!passwordCorrect) {
 		throw new Error('Wrong Password');
@@ -35,18 +34,17 @@ export const POST = async (req: Request, res: NextApiResponse) => {
 		.setExpirationTime('1m')
 		.sign(new TextEncoder().encode(getJwtSecretKey()));
 
-	res.setHeader(
-		'Set-Cookie',
-		cookie.serialize('user-token', token, {
-			httpOnly: true,
-			secure: process.env.NODE_ENV === 'production',
-			path: '/',
-		})
-	);
+	// as cookie
+	const tokenCookie = cookie.serialize('user-token', token, {
+		httpOnly: true,
+		secure: process.env.NODE_ENV === 'production',
+		path: '/',
+	});
 
-	return NextResponse.json({
-		status: 'success',
-		message: 'User Logged in successfully',
-		data: user,
+	return new Response('User Logged in successfully', {
+		headers: {
+			'Content-Type': 'application/json',
+			'Set-Cookie': tokenCookie,
+		},
 	});
 };
