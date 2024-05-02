@@ -895,6 +895,15 @@ a {
   font-weight: bold;
   font-size: large;
 }
+.app .sidebar .blur-bg.active-link {
+  color: #7c2bac;
+}
+.app .sidebar .blur-bg.active-link span {
+  background: #7c2bac;
+  background: linear-gradient(to right, #7c2bac 0%, rgb(255, 103, 47) 81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .app .sidebar.closed {
   min-width: 100px;
   width: 100px;
