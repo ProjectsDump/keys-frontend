@@ -1,4 +1,5 @@
 import { jwtVerify } from 'jose';
+import { cookies } from 'next/headers';
 
 export const getJwtSecretKey = () => {
 	const secret = process.env.JWT_SECRET_KEY;	
@@ -25,3 +26,10 @@ export const verifyAuth = async (token: string) => {
 		throw new Error('Could not verify token');
 	}
 };
+
+export const getToken = ()=>{
+	const token = cookies().get('user-token')?.value;
+	console.log(token);
+	if(!token) return null;
+	return token;
+}
