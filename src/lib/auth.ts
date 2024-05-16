@@ -1,5 +1,9 @@
+"use client"
+
 import { jwtVerify } from 'jose';
-import { cookies } from 'next/headers';
+import { useCookies } from 'next-client-cookies';
+
+
 
 export const getJwtSecretKey = () => {
 	const secret = process.env.JWT_SECRET_KEY;	
@@ -27,9 +31,10 @@ export const verifyAuth = async (token: string) => {
 	}
 };
 
+
 export const getToken = ()=>{
-	const token = cookies().get('user-token')?.value;
-	console.log(token);
-	if(!token) return null;
+	const cookies = useCookies()
+	const token = cookies.get("user-token");
+	if(!token) return '';
 	return token;
 }

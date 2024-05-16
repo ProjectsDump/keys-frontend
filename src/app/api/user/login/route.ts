@@ -1,11 +1,11 @@
 import { comparePass } from '@/backend/hash';
 import User from '@/backend/models/user';
-import { getJwtSecretKey } from '@/lib/auth';
 import { UserLoginInterface } from '@/utils/Interfaces';
 import { SignJWT } from 'jose';
 import { nanoid } from 'nanoid';
 import cookie from 'cookie';
 import { connectDB } from '@/backend/mongodb';
+import { getJwtSecretKey } from '@/lib/auth';
 
 // login user
 export const POST = async (req: Request) => {
@@ -32,7 +32,7 @@ export const POST = async (req: Request) => {
 		.setJti(nanoid())
 		.setIssuedAt()
 		.setExpirationTime('1m')
-		.sign(new TextEncoder().encode(getJwtSecretKey()));
+		.sign(new TextEncoder().encode(process.env.JWT_SECRET_KEY));
 
 	// as cookie
 	const tokenCookie = cookie.serialize('user-token', token, {
