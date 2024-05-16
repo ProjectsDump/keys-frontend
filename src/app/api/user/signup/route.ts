@@ -22,7 +22,6 @@ export const POST = async (req: Request) => {
 		username,
 		password: hashedPass,
 	});
-	console.log(newUser);
 	
 	try {
 		await newUser.save();

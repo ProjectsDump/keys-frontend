@@ -2,27 +2,39 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyAuth } from './lib/auth';
 
 export async function middleware(req: NextRequest) {
+    // get token from request cookie
 	const token = req.cookies.get('user-token')?.value;
 
+    // function to check if token is valid
 	const verifiedToken =
 		token &&
 		(await verifyAuth(token).catch((err) => {
 			console.log('Verification failed', err);
 		}));
 
-    if(req.nextUrl.pathname.startsWith('/login') && !verifiedToken){
-        return
-    }
+    // if user is not verifies and is in login or signup page nothing should happen
+	if (
+		(req.nextUrl.pathname.startsWith('/login') ||
+			req.nextUrl.pathname.startsWith('/register')) &&
+		!verifiedToken
+	) {
+		return;
+	}
 
-    if(req.url.includes('/login') && verifiedToken){
-        return NextResponse.redirect(new URL('/dashboard', req.url));
-    }
+    // if user is verified and is in login or signup page it should redirect to dashboard
+	if (
+		(req.url.includes('/login') || req.url.includes('/register')) &&
+		verifiedToken
+	) {
+		return NextResponse.redirect(new URL('/dashboard', req.url));
+	}
 
-    if(!verifiedToken){
-        return NextResponse.redirect(new URL('/login', req.url));
-    }
+    // if user is not verified it should redirect to login page
+	if (!verifiedToken) {
+		return NextResponse.redirect(new URL('/login', req.url));
+	}
 }
 
 export const config = {
-	matcher: ['/dashboard', "/login"],
+	matcher: ['/dashboard/:path*', '/login', '/register'],
 };
