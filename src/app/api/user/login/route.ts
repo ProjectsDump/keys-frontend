@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid';
 import cookie from 'cookie';
 import { connectDB } from '@/backend/mongodb';
 import { getJwtSecretKey } from '@/lib/auth';
+import { NextResponse } from 'next/server';
 
 // login user
 export const POST = async (req: Request) => {
@@ -41,10 +42,15 @@ export const POST = async (req: Request) => {
 		path: '/',
 	});
 
-	return new Response('User Logged in successfully', {
-		headers: {
-			'Content-Type': 'application/json',
-			'Set-Cookie': tokenCookie,
-		},
-	});
+	const { password: _, ...userRes } = user.toObject();
+
+	return NextResponse.json(
+		{ message: 'user logged in', data: userRes },
+		{
+			headers: {
+				'Content-Type': 'application/json',
+				'Set-Cookie': tokenCookie,
+			},
+		}
+	);
 };

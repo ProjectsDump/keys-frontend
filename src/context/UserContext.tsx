@@ -1,32 +1,56 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { UserContextInterface, UserInterface } from '@/utils/Interfaces';
 import { createContext, useState } from 'react';
-import { getToken } from '@/lib/auth';
-import { decodeJwt } from 'jose';
+import { useCookies } from 'next-client-cookies';
+import { getToken, verifyAuth } from '@/lib/auth';
 
 export const UserContext = createContext<UserContextInterface>(
 	{} as UserContextInterface
 );
 
-const initialTestUser = {
-	username: 'glory',
-	email: 'glory@gmail.com',
+const tokenIsVerified = async () => {
+	const cookies = useCookies();
+	const token = cookies.get('user-token');
+	console.log('token: ', token);
+
+	if (!token) {
+		// cookies.remove('user-data');
+		console.log('No token found');
+		return;
+	}
+	return (
+		token &&
+		(await verifyAuth(token!).catch((err) => {
+			// cookies.remove('user-data');
+			console.log('Verification failed', err);
+		}))
+	);
 };
 
-const UserProvider =  ({ children }: { children: React.ReactNode }) => {
-	const [user, setUser] = useState<null | UserInterface>(initialTestUser);
-	const token = getToken();
-	const decoded =  decodeJwt(token!);
-	
-	console.log(decoded);
-	
+const getUserDataCookie = () => {
+	const cookies = useCookies();
+	if(!tokenIsVerified){
+		return null
+	}
+	const user = cookies.get('user-data');
+	if (!user) return null;
+	return JSON.parse(user);
+};
 
-	const isLoggedIn = () => !!user;
+const UserProvider = ({ children }: { children: React.ReactNode }) => {
+	const [user, setUser] = useState<null | UserInterface>(getUserDataCookie());
+	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+	// useEffect(() => {
+	// 	setUser()
+	// 	setIsLoggedIn(!!user);
+	// 	console.log('user: ', user);
+	// }, []);
 
 	return (
-		<UserContext.Provider value={{ user, setUser, isLoggedIn }}>
+		<UserContext.Provider value={{ user, isLoggedIn, setUser }}>
 			{children}
 		</UserContext.Provider>
 	);
