@@ -132,7 +132,7 @@ const Generator = () => {
 									/>
 								</div>
 							</div>
-							{isLoggedIn() ? (
+							{isLoggedIn ? (
 								<button
 									onClick={() => setOpenSaveModal(true)}
 									className='btn save-btn'>
