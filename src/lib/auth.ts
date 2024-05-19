@@ -32,9 +32,3 @@ export const verifyAuth = async (token: string) => {
 };
 
 
-export const getToken = ()=>{
-	const cookies = useCookies()
-	const token = cookies.get("user-token");
-	if(!token) return '';
-	return token;
-}

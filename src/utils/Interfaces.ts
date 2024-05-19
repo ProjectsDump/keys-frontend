@@ -10,6 +10,10 @@ export interface StrengthInterface {
 export interface UserInterface {
 	username: string;
 	email: string;
+	createdAt: string;
+	updatedAt: string;
+	__v: number;
+	_id: string;
 }
 
 export interface UserContextInterface {
@@ -25,13 +29,13 @@ export interface PasswordInterface {
 	description: string;
 }
 
-export interface UserRegisterInterface{
+export interface UserRegisterInterface {
 	email: string;
 	username: string;
 	password: string;
 }
 
-export interface UserLoginInterface{
-    email: string;
-    password: string;
+export interface UserLoginInterface {
+	email: string;
+	password: string;
 }
