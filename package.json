@@ -25,6 +25,7 @@
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "cookie": "^0.6.0",
+    "cookies-next": "^4.1.1",
     "eslint": "8.43.0",
     "eslint-config-next": "^14.2.3",
     "jose": "^5.2.4",
