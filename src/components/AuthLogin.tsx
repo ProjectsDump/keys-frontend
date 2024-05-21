@@ -1,20 +1,33 @@
 'use client';
 
+import { UserContext } from '@/context/UserContext';
 import { UserLoginInterface } from '@/utils/Interfaces';
 import { loginApiCall } from '@/utils/apiCalls';
 import { useCookies } from 'next-client-cookies';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 const AuthLogin = () => {
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 
+	const [error, setError] = useState('');
+	const [isError, setIsError] = useState(false);
+
+	const { setIsLoggedIn } = useContext(UserContext);
+
 	const cookies = useCookies();
 
 	const router = useRouter();
+
+	const errorTimer = () => {
+		setIsError(true);
+		setTimeout(() => {
+			setIsError(false);
+		}, 3000);
+	};
 
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
@@ -25,10 +38,12 @@ const AuthLogin = () => {
 					if (res?.data) {
 						cookies.set('user-data', JSON.stringify(res.data.data));
 					}
+					setIsLoggedIn(true);
 					router.push('/dashboard');
 				})
 				.catch((err) => {
-					console.log(err);
+					errorTimer();
+					setError(err?.response?.data?.error);
 				});
 		} catch (error) {
 			console.log(error);
@@ -49,6 +64,7 @@ const AuthLogin = () => {
 							/>
 						</Link>
 					</div>
+					<div className='authError'>{isError && <p>{error}</p>}</div>
 				</div>
 				<form className='authlogin-form' onSubmit={handleSubmit}>
 					<input

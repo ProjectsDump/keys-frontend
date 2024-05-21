@@ -5,7 +5,6 @@ import { SignJWT } from 'jose';
 import { nanoid } from 'nanoid';
 import cookie from 'cookie';
 import { connectDB } from '@/backend/mongodb';
-import { getJwtSecretKey } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 
 // login user
@@ -18,13 +17,13 @@ export const POST = async (req: Request) => {
 	// check if email already exists
 	const user = await User.findOne({ email });
 	if (!user) {
-		throw new Error('User not found');
+		return NextResponse.json({ error: 'Email not found' }, { status: 404 });
 	}
 
 	// check if password already exists
 	const passwordCorrect = await comparePass(password, user.password);
 	if (!passwordCorrect) {
-		throw new Error('Wrong Password');
+		return NextResponse.json({ error: 'Wrong Password' }, { status: 500 });
 	}
 
 	// return a jwttoken to the user

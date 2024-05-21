@@ -9,25 +9,30 @@ export const UserContext = createContext<UserContextInterface>(
 	{} as UserContextInterface
 );
 
-const getUserDataCookie = () => {
-	const user = getCookie('user-data');
-	if (!user) return null;
-	return JSON.parse(user);
+const getUserData = () => {
+	const getUser = getCookie('user-data');
+	if (!getUser) return null;
+	const resUser = JSON.parse(getUser);
+	return resUser;
 };
 
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
-	const [user, setUser] = useState<null | UserInterface>(getUserDataCookie());
+	const [user, setUser] = useState<null | UserInterface>(getUserData());
 	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
-	useEffect(() => {
-		const u = getUserDataCookie();		
-		setUser(u)
+	const getUserDataCookie = () => {
+		const getUser = getUserData();
+		setUser(getUser);
 		setIsLoggedIn(!!user);
-		console.log('user: ', user);
-	}, []);
+	};
+
+	useEffect(() => {
+		getUserDataCookie();
+	}, [isLoggedIn]);
 
 	return (
-		<UserContext.Provider value={{ user, isLoggedIn, setUser }}>
+		<UserContext.Provider
+			value={{ user, isLoggedIn, setUser, setIsLoggedIn }}>
 			{children}
 		</UserContext.Provider>
 	);

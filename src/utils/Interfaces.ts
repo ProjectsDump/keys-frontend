@@ -20,6 +20,7 @@ export interface UserContextInterface {
 	user: null | UserInterface;
 	setUser: React.Dispatch<React.SetStateAction<UserInterface | null>>;
 	isLoggedIn: boolean;
+	setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface PasswordInterface {

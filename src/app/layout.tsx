@@ -2,6 +2,8 @@ import '../styles/global.css';
 import Navbar from '@/components/Navbar';
 import UserProvider from '@/context/UserContext';
 import { CookiesProvider } from 'next-client-cookies/server';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { headers } from 'next/headers';
 
 export const metadata = {
@@ -19,7 +21,6 @@ export default function RootLayout({
 	// const domain = headersList.get('host') || '';
 	// const fullUrl = headersList.get('referer') || '';
 	// const pathname = fullUrl.split(domain)[1];
-	
 
 	// Check if pathname is in the routeArray
 	// const rendernav = !routeArray.includes(pathname);
@@ -34,13 +35,25 @@ export default function RootLayout({
 					<div className='gradient' />
 				</div>
 				<CookiesProvider>
+					<ToastContainer
+						position='top-right'
+						autoClose={5000}
+						hideProgressBar={false}
+						newestOnTop={false}
+						closeOnClick
+						rtl={false}
+						pauseOnFocusLoss
+						draggable
+						pauseOnHover
+						theme='light'
+					/>
 					<UserProvider>
 						<main className='app'>
 							{/* {rendernav && ( */}
-								<>
-									<Navbar />{' '}
-									<div className='navbar-placeholder' />
-								</>
+							<>
+								<Navbar />{' '}
+								<div className='navbar-placeholder' />
+							</>
 							{/* )}s */}
 							{children}
 						</main>
