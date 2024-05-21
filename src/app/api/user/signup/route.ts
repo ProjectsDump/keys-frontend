@@ -14,7 +14,7 @@ export const POST = async (req: Request) => {
 	// check is email alreaady exists
 	const user = await User.findOne({ email });
 	if (user) {
-		throw new Error('email already exists try using another one');
+		return NextResponse.json({ error: 'This email already exists try using another one' }, { status: 500 });
 	}
 	const hashedPass = await hashPass(password);
 	const newUser = new User({
