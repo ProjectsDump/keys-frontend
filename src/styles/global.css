@@ -338,6 +338,11 @@ a {
   font-weight: 600;
   color: rgba(90, 90, 90, 0.906);
 }
+.app .auth-page .auth-container .authError p {
+  color: red;
+  font-size: 12px;
+  font-weight: lighter;
+}
 .app .auth-page .auth-container .auth-credentials {
   display: flex;
   flex-direction: column;
@@ -363,10 +368,7 @@ a {
   border-radius: 5px;
   border: 1px solid #b292c4;
 }
-.app .auth-page .auth-container .auth-btn {
-  margin-top: 30px;
-}
-.app .auth-page .auth-container .auth-btn .auth-create {
+.app .auth-page .auth-container .auth-credentials .auth-create {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -382,8 +384,12 @@ a {
   z-index: 1;
   margin-top: 35px;
   box-shadow: inset 18px 18px 39px #66238d, inset -18px -18px 39px #9233cb;
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
 }
-.app .auth-page .auth-container .auth-btn .auth-create ::before {
+.app .auth-page .auth-container .auth-credentials .auth-create ::before {
   content: "";
   position: absolute;
   left: 0;
@@ -396,14 +402,11 @@ a {
   z-index: -1;
   box-shadow: inset 18px 18px 39px #66238d, inset -18px -18px 39px #9233cb;
 }
-.app .auth-page .auth-container .auth-btn .auth-create :hover::before {
+.app .auth-page .auth-container .auth-credentials .auth-create :hover::before {
   transform: translateX(0);
 }
-.app .auth-page .auth-container .auth-btn .auth-create p {
-  font-size: 15px;
-  font-weight: 500;
-  color: white;
-  text-decoration: none;
+.app .auth-page .auth-container .auth-btn {
+  margin-top: 30px;
 }
 .app .auth-page .auth-container .auth-btn .auth-direct {
   display: flex;

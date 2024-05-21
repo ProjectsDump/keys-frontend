@@ -3,6 +3,7 @@
 import { UserContext } from '@/context/UserContext';
 import { UserLoginInterface } from '@/utils/Interfaces';
 import { loginApiCall } from '@/utils/apiCalls';
+import { errorTimer } from '@/utils/helperFunc';
 import { useCookies } from 'next-client-cookies';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,13 +23,6 @@ const AuthLogin = () => {
 
 	const router = useRouter();
 
-	const errorTimer = () => {
-		setIsError(true);
-		setTimeout(() => {
-			setIsError(false);
-		}, 3000);
-	};
-
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		const body: UserLoginInterface = { email, password };
@@ -42,7 +36,7 @@ const AuthLogin = () => {
 					router.push('/dashboard');
 				})
 				.catch((err) => {
-					errorTimer();
+					errorTimer(setIsError);
 					setError(err?.response?.data?.error);
 				});
 		} catch (error) {

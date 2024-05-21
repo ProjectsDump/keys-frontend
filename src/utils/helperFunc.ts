@@ -1,3 +1,4 @@
+import React from 'react';
 import { StrengthInterface } from './Interfaces';
 import { passwordGeneratorFunc } from './password-generator-func';
 
@@ -62,10 +63,7 @@ export const checkPasswordStrength = (
 };
 
 // change length of password on btn click
-export const handleBtnClick = (
-	type: string,
-	setPasswordLength: Function,
-) => {
+export const handleBtnClick = (type: string, setPasswordLength: Function) => {
 	// handle remove btn click
 	if (type === 'remove') {
 		setPasswordLength((prev: number) => prev - 1);
@@ -77,11 +75,7 @@ export const handleBtnClick = (
 };
 
 // handle slider
-export const handleSlider = (
-	e: any,
-	setPasswordLength: Function,
-	
-) => {
+export const handleSlider = (e: any, setPasswordLength: Function) => {
 	e.preventDefault();
 	// handle slider change
 	setPasswordLength(e.target.value);
@@ -100,4 +94,13 @@ export const strengthTag = (passStrength: string) => {
 				? 'red'
 				: 'lightblue',
 	};
+};
+
+export const errorTimer = (
+	setIsError: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+	setIsError(true);
+	setTimeout(() => {
+		setIsError(false);
+	}, 3000);
 };
